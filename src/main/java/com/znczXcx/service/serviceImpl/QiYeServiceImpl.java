@@ -17,4 +17,10 @@ public class QiYeServiceImpl implements QiYeService {
 		// TODO Auto-generated method stub
 		return qiYeDao.add(qy);
 	}
+
+	public boolean checkQyhIfExist(String qyh) {
+		// TODO Auto-generated method stub
+		int count=qiYeDao.getCountByQyh(qyh);
+		return count==0?false:true;
+	}
 }

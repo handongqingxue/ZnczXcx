@@ -37,4 +37,10 @@
 			</if>
 		</trim>
 	</insert>
+	<select id="getCountByQyh" resultType="java.lang.Integer">
+		select count(*) from qi_ye where qyh=#{qyh}
+	</select>
+	<select id="getByQyhMm" resultType="com.znczXcx.entity.QiYe">
+		select * from qi_ye where qyh=#{qyh} and mm=#{mm}
+	</select>
 </mapper>

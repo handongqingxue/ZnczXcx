@@ -56,8 +56,8 @@ body {
 			<form class="layui-form" method="post">
 				<div class="layui-form-item">
 					<label class="beg-login-icon"> <i class="layui-icon">&#xe612;</i>
-					</label> <input type="text" name="yqh" placeholder="请输入企业号"
-						class="layui-input" lay-verify="required|yqh"
+					</label> <input type="text" name="qyh" placeholder="请输入企业号"
+						class="layui-input" lay-verify="required|qyh"
 						autocomplete="off" value="">
 				</div>
 				<div class="layui-form-item">
@@ -97,7 +97,7 @@ body {
             $(data.elem).attr('class', 'layui-btn layui-btn-disabled');
             var url=baseUrl + "/main/login"
             var params = {
-                    yqh: data.field.yqh,
+                    qyh: data.field.qyh,
                     mm: MD5(data.field.mm).toUpperCase(),
                     //mm: data.field.mm,
                     rememberMe : data.field.rememberMe
@@ -118,12 +118,12 @@ body {
 
         //自定义验证规则
         form.verify({
-            yqh: function (value) {
+            qyh: function (value) {
                 if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
-                    return '用户名不能有特殊字符';
+                    return '企业号不能有特殊字符';
                 }
                 if (/(^\_)|(\__)|(\_+$)/.test(value)) {
-                    return '用户名首尾不能出现下划线\'_\'';
+                    return '企业号首尾不能出现下划线\'_\'';
                 }
               //  if(!/^1[3|4|5|7|8][0-9]{9}$/.test(value)){
              //       return '请输入正确用户名（手机号）';

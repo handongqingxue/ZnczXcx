@@ -10,6 +10,22 @@
 $(function(){
 	
 });
+
+function checkQyhIfExist(qyh){
+	var flag=false;
+	$.ajaxSetup({async:false});
+	$.post(baseUrl+"/main/checkQyhIfExist",
+		{qyh:qyh},
+		function(result){
+			if(result.status==0){
+				flag=false;
+			}
+			else
+				flag=true;
+		}
+	,"json");
+	return flag;
+}
 </script>
 <style>
 .register_content {
@@ -147,7 +163,8 @@ body .beg-login-bg {
 			});
 			 form.verify({
 					qyh:function(value){
-						return '企业号已存在';
+						if(!checkQyhIfExist(value))
+							return '企业号已存在';
 					},
 		            //验证密码是否一样
 		            same_mm: function (value) {

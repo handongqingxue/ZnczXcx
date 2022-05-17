@@ -6,4 +6,6 @@ public interface QiYeService {
 
 	int add(QiYe qy);
 
+	boolean checkQyhIfExist(String qyh);
+
 }

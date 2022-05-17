@@ -39,6 +39,14 @@ public class QiYe {
 	public void setJs(String js) {
 		this.js = js;
 	}
+	public QiYe() {
+		super();
+	}
+	
+	public QiYe(String qyh,String mm) {
+		this.qyh=qyh;
+		this.mm=mm;
+	}
 	private String qyh;
 	private String mm;
 	private String mc;
