@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.znczXcx.dao.GuoBangJiLuMapper">
+	<update id="createTabByQyh">
+		CREATE TABLE `guo_bang_ji_lu_${qyh}`  (
+		  `id` int NOT NULL AUTO_INCREMENT,
+		  `gbzl` float(10, 4) NULL DEFAULT NULL,
+		  `zp1` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+		  `zp2` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+		  `zp3` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+		  `gbzt` int NULL DEFAULT NULL,
+		  `gbsj` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+		  `gblx` int NULL DEFAULT NULL,
+		  `ddId` int NULL DEFAULT NULL,
+		  PRIMARY KEY (`id`) USING BTREE
+		) ENGINE = InnoDB AUTO_INCREMENT = 196 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+	</update>
+</mapper>

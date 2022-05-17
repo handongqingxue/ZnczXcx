@@ -22,6 +22,8 @@ public class MainController {
 
 	@Autowired
 	private QiYeService qiYeService;
+	@Autowired
+	private MainService mainService;
 
 	/**
 	 * Ìø×ªµ½µÇÂ¼Ò³
@@ -55,6 +57,8 @@ public class MainController {
 			plan.setMsg("×¢²áÊ§°Ü");
 			return JsonUtil.getJsonFromObject(plan);
 		}else {
+			boolean bool=mainService.createTabByQyh(qy.getQyh());
+			
 			plan.setStatus(0);
 			plan.setMsg("×¢²á³É¹¦");
 			plan.setData(qy);
