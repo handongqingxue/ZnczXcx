@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.znczXcx.dao.QiYeMapper">
+	<insert id="add" parameterType="com.znczXcx.entity.QiYe">
+		insert into qi_ye
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="qyh!=null">
+				qyh,
+			</if>
+			<if test="mm!=null">
+				mm,
+			</if>
+			<if test="mc!=null">
+				mc,
+			</if>
+				cjsj,
+			<if test="js!=null">
+				js,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="qyh!=null">
+				#{qyh},
+			</if>
+			<if test="mm!=null">
+				#{mm},
+			</if>
+			<if test="mc!=null">
+				#{mc},
+			</if>
+				now(),
+			<if test="js!=null">
+				#{js},
+			</if>
+		</trim>
+	</insert>
+</mapper>
