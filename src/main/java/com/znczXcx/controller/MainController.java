@@ -1,5 +1,9 @@
 package com.znczXcx.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -24,6 +28,8 @@ public class MainController {
 	private QiYeService qiYeService;
 	@Autowired
 	private MainService mainService;
+	@Autowired
+	private ZhiJianJiLuService zhiJianJiLuService;
 
 	/**
 	 * 跳转到登录页
@@ -97,14 +103,14 @@ public class MainController {
 		
 		plan.setStatus(0);
 		plan.setMsg("验证通过");
-		plan.setUrl("/ddgl/zhcx/list");
+		plan.setUrl("/gbgl/bdjl/list");
 		return JsonUtil.getJsonFromObject(plan);
 	}
 
 	@RequestMapping(value="/exit")
 	public String exit(HttpSession session) {
 		System.out.println("退出接口");
-		Subject currentUser = SecurityUtils.getSubject();       
+		Subject currentUser = SecurityUtils.getSubject();
 	    currentUser.logout();    
 		return "login";
 	}
@@ -125,5 +131,43 @@ public class MainController {
 			json=JsonUtil.getJsonFromObject(plan);
 		}
 		return json;
+	}
+
+	@RequestMapping(value="/selectZJJLListByQytb")
+	@ResponseBody
+	public Map<String, Object> selectZJJLListByQytb(String qyh, Integer qytb) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		boolean bool=zhiJianJiLuService.checkIfTbZt(qyh,qytb);
+		if(bool) {
+			List<ZhiJianJiLu> zjjlList=zhiJianJiLuService.selectListByQytb(qyh,qytb);
+			zhiJianJiLuService.updateTbZtByQytb(qyh,qytb,ZhiJianJiLu.TONG_BU_ZHONG);
+			
+			jsonMap.put("status", "ok");
+			jsonMap.put("zjjlList", zjjlList);
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
+		
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/updateZJJLToYtb")
+	@ResponseBody
+	public Map<String, Object> updateZJJLToYtb(String qyh) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		int count=zhiJianJiLuService.updateToYtb(qyh);
+		if(count==0) {
+			jsonMap.put("status", "no");
+		}
+		else {
+			jsonMap.put("status", "ok");
+		}
+		
+		return jsonMap;
 	}
 }

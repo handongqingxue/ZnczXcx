@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.znczXcx.dao.ZhiJianJiLuMapper">
+	<insert id="add" parameterType="com.znczXcx.entity.ZhiJianJiLu">
+		insert into zhi_jian_ji_lu_${qyh}
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="ddId!=null">
+				ddId,
+			</if>
+			<if test="zjyId!=null">
+				zjyId,
+			</if>
+				zjsj,
+			<if test="jg!=null">
+				jg,
+			</if>
+			<if test="bz!=null">
+				bz,
+			</if>
+				qyytb
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="ddId!=null">
+				#{ddId},
+			</if>
+			<if test="zjyId!=null">
+				#{zjyId},
+			</if>
+				now(),
+			<if test="jg!=null">
+				#{jg},
+			</if>
+			<if test="bz!=null">
+				#{bz},
+			</if>
+				1
+		</trim>
+	</insert>
+	<select id="getTbZtCount" resultType="java.lang.Integer">
+		select count(*) from zhi_jian_ji_lu_${qyh} where qytb=#{qytb}
+	</select>
+	<select id="selectListByQytb" resultType="com.znczXcx.entity.ZhiJianJiLu">
+		select * from zhi_jian_ji_lu_${qyh} where qytb=#{qytb}
+	</select>
+	<update id="updateTbZtByQytb">
+		update zhi_jian_ji_lu_${qyh} set qytb=#{xtbzt} where qytb=#{qytb}
+	</update>
+	<update id="updateToYtb">
+		update zhi_jian_ji_lu_${qyh} set qytb=${@com.znczXcx.entity.ZhiJianJiLu@YI_TONG_BU} where qytb=${@com.znczXcx.entity.ZhiJianJiLu@TONG_BU_ZHONG}
+	</update>
+</mapper>
