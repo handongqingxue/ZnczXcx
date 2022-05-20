@@ -5,15 +5,18 @@ public class ZhiJianJiLu {
 	public static final Integer HE_GE=1;//合格
 	public static final Integer BU_HE_GE=2;//不合格
 	
-	public static final Integer WEI_TONG_BU=1;//未同步
-	public static final Integer TONG_BU_ZHONG=2;//同步中
-	public static final Integer YI_TONG_BU=3;//已同步
 	private Integer id;
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Integer getQyjlId() {
+		return qyjlId;
+	}
+	public void setQyjlId(Integer qyjlId) {
+		this.qyjlId = qyjlId;
 	}
 	public Integer getDdId() {
 		return ddId;
@@ -63,6 +66,7 @@ public class ZhiJianJiLu {
 	public void setQyh(String qyh) {
 		this.qyh = qyh;
 	}
+	private Integer qyjlId;
 	private Integer ddId;
 	private Integer zjyId;
 	private String zjyZsxm;

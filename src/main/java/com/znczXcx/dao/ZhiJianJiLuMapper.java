@@ -18,4 +18,6 @@ public interface ZhiJianJiLuMapper {
 
 	int updateToYtb(@Param("qyh") String qyh);
 
+	int createTabByQyh(@Param("qyh") String qyh);
+
 }

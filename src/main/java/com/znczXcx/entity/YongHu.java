@@ -12,6 +12,12 @@ public class YongHu {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public Integer getQyjlId() {
+		return qyjlId;
+	}
+	public void setQyjlId(Integer qyjlId) {
+		this.qyjlId = qyjlId;
+	}
 	public String getYhm() {
 		return yhm;
 	}
@@ -54,6 +60,18 @@ public class YongHu {
 	public void setQxIds(String qxIds) {
 		this.qxIds = qxIds;
 	}
+	public Integer getQytb() {
+		return qytb;
+	}
+	public void setQytb(Integer qytb) {
+		this.qytb = qytb;
+	}
+	public String getQyh() {
+		return qyh;
+	}
+	public void setQyh(String qyh) {
+		this.qyh = qyh;
+	}
 	//https://blog.csdn.net/qq_43416276/article/details/102981480
 	public YongHu() {
 		super();
@@ -63,6 +81,7 @@ public class YongHu {
 		this.yhm=yhm;
 		this.mm=mm;
 	}
+	private Integer qyjlId;
 	private String yhm;
 	private String mm;
 	private String zsxm;
@@ -70,4 +89,6 @@ public class YongHu {
 	private Boolean check;
 	private String js;
 	private String qxIds;
+	private Integer qytb;//企业同步 1.未同步 2.同步中 3.已同步
+	private String qyh;
 }

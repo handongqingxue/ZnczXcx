@@ -37,6 +37,7 @@ public class MainController {
 	 */
 	@RequestMapping(value="/goLogin")
 	public String goLogin() {
+		boolean bool=mainService.createTabByQyh("yuejiazhuang");
 		
 		return "login";
 	}
@@ -142,7 +143,7 @@ public class MainController {
 		boolean bool=zhiJianJiLuService.checkIfTbZt(qyh,qytb);
 		if(bool) {
 			List<ZhiJianJiLu> zjjlList=zhiJianJiLuService.selectListByQytb(qyh,qytb);
-			zhiJianJiLuService.updateTbZtByQytb(qyh,qytb,ZhiJianJiLu.TONG_BU_ZHONG);
+			zhiJianJiLuService.updateTbZtByQytb(qyh,qytb,Main.TONG_BU_ZHONG);
 			
 			jsonMap.put("status", "ok");
 			jsonMap.put("zjjlList", zjjlList);
