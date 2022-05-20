@@ -20,6 +20,8 @@ import com.znczXcx.service.*;
 import com.znczXcx.entity.*;
 import com.znczXcx.util.*;
 
+import net.sf.json.JSONArray;
+
 @Controller
 @RequestMapping("/main")
 public class MainController {
@@ -28,6 +30,8 @@ public class MainController {
 	private QiYeService qiYeService;
 	@Autowired
 	private MainService mainService;
+	@Autowired
+	private DingDanService dingDanService;
 	@Autowired
 	private ZhiJianJiLuService zhiJianJiLuService;
 
@@ -169,6 +173,25 @@ public class MainController {
 			jsonMap.put("status", "ok");
 		}
 		
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/addDDToYf")
+	@ResponseBody
+	public Map<String, Object> addDDToYf(String qyh, String ddJAStr) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		System.out.println("ddJAStr==="+ddJAStr);
+		JSONArray ddJA = JSONArray.fromObject(ddJAStr);
+		List<DingDan> ddList = JSONArray.toList(ddJA, DingDan.class);
+		System.out.println("size==="+ddList.size());
+		int count=dingDanService.addToYf(ddList,qyh);
+		if(count==ddList.size()) {
+			jsonMap.put("status", "ok");
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
 		return jsonMap;
 	}
 }

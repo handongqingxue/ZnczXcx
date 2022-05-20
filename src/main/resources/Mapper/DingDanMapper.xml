@@ -28,6 +28,116 @@
 		  `bjsj` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
 		  `qytb` int NULL DEFAULT 1,
 		  PRIMARY KEY (`id`) USING BTREE
-		) ENGINE = InnoDB AUTO_INCREMENT = 153 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+		) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 	</update>
+	<insert id="add" parameterType="com.znczXcx.entity.DingDan">
+		insert into `ding_dan_${qyh}`
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="qyjlId!=null">
+				qyjlId,
+			</if>
+			<if test="ddh!=null">
+				ddh,
+			</if>
+			<if test="ddztId!=null">
+				ddztId,
+			</if>
+				yjzt,
+				ejzt,
+			<if test="sjsfzh!=null">
+				sjsfzh,
+			</if>
+			<if test="sjxm!=null">
+				sjxm,
+			</if>
+			<if test="cph!=null">
+				cph,
+			</if>
+			<if test="lxlx!=null">
+				lxlx,
+			</if>
+			<if test="yzxzl!=null">
+				yzxzl,
+			</if>
+			<if test="sjzl!=null">
+				sjzl,
+			</if>
+			<if test="zlceb!=null">
+				zlceb,
+			</if>
+			<if test="wzlxId!=null">
+				wzlxId,
+			</if>
+			<if test="wzId!=null">
+				wzId,
+			</if>
+			<if test="yssId!=null">
+				yssId,
+			</if>
+			<if test="fhdwId!=null">
+				fhdwId,
+			</if>
+			<if test="shbmId!=null">
+				shbmId,
+			</if>
+				bjsj,
+			<if test="qytb!=null">
+				qytb,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="qyjlId!=null">
+				#{qyjlId},
+			</if>
+			<if test="ddh!=null">
+				#{ddh},
+			</if>
+			<if test="ddztId!=null">
+				#{ddztId},
+			</if>
+				1,
+				1,
+			<if test="sjsfzh!=null">
+				#{sjsfzh},
+			</if>
+			<if test="sjxm!=null">
+				#{sjxm},
+			</if>
+			<if test="cph!=null">
+				#{cph},
+			</if>
+			<if test="lxlx!=null">
+				#{lxlx},
+			</if>
+			<if test="yzxzl!=null">
+				#{yzxzl},
+			</if>
+			<if test="sjzl!=null">
+				#{sjzl},
+			</if>
+			<if test="zlceb!=null">
+				#{zlceb},
+			</if>
+			<if test="wzlxId!=null">
+				#{wzlxId},
+			</if>
+			<if test="wzId!=null">
+				#{wzId},
+			</if>
+			<if test="yssId!=null">
+				#{yssId},
+			</if>
+			<if test="fhdwId!=null">
+				#{fhdwId},
+			</if>
+			<if test="shbmId!=null">
+				#{shbmId},
+			</if>
+				now(),
+			<if test="qytb!=null">
+				#{qytb},
+			</if>
+		</trim>
+	</insert>
 </mapper>

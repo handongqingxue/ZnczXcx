@@ -16,6 +16,6 @@
 		  `qxIds` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
 		  `qytb` int NULL DEFAULT 1,
 		  PRIMARY KEY (`id`) USING BTREE
-		) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+		) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 	</update>
 </mapper>
