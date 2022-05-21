@@ -62,6 +62,6 @@
 		update zhi_jian_ji_lu_${qyh} set qytb=#{xtbzt} where qytb=#{qytb}
 	</update>
 	<update id="updateToYtb">
-		update zhi_jian_ji_lu_${qyh} set qytb=${@com.znczXcx.entity.ZhiJianJiLu@YI_TONG_BU} where qytb=${@com.znczXcx.entity.ZhiJianJiLu@TONG_BU_ZHONG}
+		update zhi_jian_ji_lu_${qyh} set qytb=${@com.znczXcx.entity.Main@YI_TONG_BU} where qytb=${@com.znczXcx.entity.Main@TONG_BU_ZHONG}
 	</update>
 </mapper>

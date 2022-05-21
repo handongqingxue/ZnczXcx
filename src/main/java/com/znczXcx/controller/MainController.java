@@ -33,6 +33,8 @@ public class MainController {
 	@Autowired
 	private DingDanService dingDanService;
 	@Autowired
+	private PaiDuiJiLuService paiDuiJiLuService;
+	@Autowired
 	private ZhiJianJiLuService zhiJianJiLuService;
 
 	/**
@@ -138,6 +140,27 @@ public class MainController {
 		return json;
 	}
 
+	@RequestMapping(value="/selectPDJLListByQytb")
+	@ResponseBody
+	public Map<String, Object> selectPDJLListByQytb(String qyh, Integer qytb) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		boolean bool=paiDuiJiLuService.checkIfTbZt(qyh,qytb);
+		if(bool) {
+			List<PaiDuiJiLu> pdjlList=paiDuiJiLuService.selectListByQytb(qyh,qytb);
+			paiDuiJiLuService.updateTbZtByQytb(qyh,qytb,Main.TONG_BU_ZHONG);
+			
+			jsonMap.put("status", "ok");
+			jsonMap.put("pdjlList", pdjlList);
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
+		
+		return jsonMap;
+	}
+
 	@RequestMapping(value="/selectZJJLListByQytb")
 	@ResponseBody
 	public Map<String, Object> selectZJJLListByQytb(String qyh, Integer qytb) {
@@ -154,6 +177,23 @@ public class MainController {
 		}
 		else {
 			jsonMap.put("status", "no");
+		}
+		
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/updatePDJLToYtb")
+	@ResponseBody
+	public Map<String, Object> updatePDJLToYtb(String qyh) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		int count=paiDuiJiLuService.updateToYtb(qyh);
+		if(count==0) {
+			jsonMap.put("status", "no");
+		}
+		else {
+			jsonMap.put("status", "ok");
 		}
 		
 		return jsonMap;
