@@ -18,4 +18,12 @@ public interface PaiDuiJiLuMapper {
 
 	int createTabByQyh(@Param("qyh") String qyh);
 
+	int add(PaiDuiJiLu pdjl);
+
+	int getCountByDdIdZt(@Param("ddId") Integer ddId,@Param("zt") Integer zt,@Param("qyh") String qyh);
+
+	Integer getTodayLastPdh(@Param("qyh") String qyh);
+
+	int updatePhdByDdId(@Param("lastPdh") Integer lastPdh, @Param("ddId") Integer ddId, @Param("qyh") String qyh);
+
 }

@@ -34,4 +34,20 @@ public class PaiDuiJiLuServiceImpl implements PaiDuiJiLuService {
 		// TODO Auto-generated method stub
 		return paiDuiJiLuDao.updateToYtb(qyh);
 	}
+
+	public int add(PaiDuiJiLu pdjl) {
+		// TODO Auto-generated method stub
+		return paiDuiJiLuDao.add(pdjl);
+	}
+
+	public boolean checkIfExist(Integer ddId,String qyh) {
+		// TODO Auto-generated method stub
+		return paiDuiJiLuDao.getCountByDdIdZt(ddId,PaiDuiJiLu.PAI_DUI_ZHONG,qyh)==0?false:true;
+	}
+
+	public int updatePhdByDdId(Integer ddId,String qyh) {
+		// TODO Auto-generated method stub
+		Integer lastPdh=paiDuiJiLuDao.getTodayLastPdh(qyh);
+		return paiDuiJiLuDao.updatePhdByDdId(lastPdh++,ddId,qyh);
+	}
 }

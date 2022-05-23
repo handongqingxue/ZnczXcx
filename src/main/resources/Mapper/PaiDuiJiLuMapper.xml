@@ -28,4 +28,49 @@
 	<update id="updateToYtb">
 		update pai_dui_ji_lu_${qyh} set qytb=${@com.znczXcx.entity.Main@YI_TONG_BU} where qytb=${@com.znczXcx.entity.Main@TONG_BU_ZHONG}
 	</update>
+	<insert id="add" parameterType="com.znczXcx.entity.PaiDuiJiLu">
+		insert into pai_dui_ji_lu_${qyh}
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="qyjlId!=null">
+				qyjlId,
+			</if>
+			<if test="ddId!=null">
+				ddId,
+			</if>
+				pdsj,
+			<if test="dlh!=null">
+				dlh,
+			</if>
+			<if test="pdh!=null">
+				pdh,
+			</if>
+				zt
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="qyjlId!=null">
+				#{qyjlId},
+			</if>
+			<if test="ddId!=null">
+				#{ddId},
+			</if>
+				now(),
+			<if test="dlh!=null">
+				#{dlh},
+			</if>
+			<if test="pdh!=null">
+				#{pdh},
+			</if>
+				${@com.znczXcx.entity.PaiDuiJiLu@PAI_DUI_ZHONG}
+		</trim>
+	</insert>
+	<select id="getCountByDdIdZt" resultType="java.lang.Integer">
+		select count(*) from pai_dui_ji_lu_${qyh} where ddId=#{ddId} and zt=#{zt}
+	</select>
+	<select id="getTodayLastPdh" resultType="java.lang.Integer">
+		select max(pdh) from pai_dui_ji_lu_${qyh} where date_format(pdsj,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d')
+	</select>
+	<update id="updatePhdByDdId">
+		update pai_dui_ji_lu_${qyh} set pdh=#{pdh} where zt=${@com.znczXcx.entity.PaiDuiJiLu@PAI_DUI_ZHONG} and ddId=#{ddId}
+	</update>
 </mapper>

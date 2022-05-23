@@ -16,8 +16,36 @@ import com.znczXcx.service.*;
 public class XCXController {
 
 	@Autowired
+	private PaiDuiJiLuService paiDuiJiLuService;
+	@Autowired
 	private ZhiJianJiLuService zhiJianJiLuService;
 	public static final String MODULE_NAME="xcx";
+
+	@RequestMapping(value="/newPaiDuiJiLu")
+	@ResponseBody
+	public Map<String, Object> newPaiDuiJiLu(PaiDuiJiLu pdjl) {
+		
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		Integer ddId = pdjl.getDdId();
+		String qyh = pdjl.getQyh();
+		boolean exist=paiDuiJiLuService.checkIfExist(ddId,qyh);
+		int count=0;
+		if(exist)
+			count=paiDuiJiLuService.updatePhdByDdId(ddId,qyh);
+		else
+			count=paiDuiJiLuService.add(pdjl);
+		
+		if(count>0) {
+			jsonMap.put("message", "ok");
+			jsonMap.put("info", "创建排队记录成功！");
+		}
+		else {
+			jsonMap.put("message", "no");
+			jsonMap.put("info", "创建排队记录失败！");
+		}
+		return jsonMap;
+	}
 
 	@RequestMapping(value="/newZhiJianJiLu")
 	@ResponseBody

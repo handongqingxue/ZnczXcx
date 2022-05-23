@@ -2,12 +2,22 @@ package com.znczXcx.entity;
 
 public class PaiDuiJiLu {
 
+	public static final Integer PAI_DUI_ZHONG=1;//排队中
+	public static final Integer YI_WAN_CHENG=2;//已完成
+	public static final Integer YI_GUO_HAO=3;//已过号
+	
 	private Integer id;
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public Integer getQyjlId() {
+		return qyjlId;
+	}
+	public void setQyjlId(Integer qyjlId) {
+		this.qyjlId = qyjlId;
 	}
 	public Integer getDdId() {
 		return ddId;
@@ -51,6 +61,7 @@ public class PaiDuiJiLu {
 	public void setQyh(String qyh) {
 		this.qyh = qyh;
 	}
+	private Integer qyjlId;
 	private Integer ddId;
 	private String pdsj;
 	private Integer dlh;

@@ -14,4 +14,10 @@ public interface PaiDuiJiLuService {
 
 	int updateToYtb(String qyh);
 
+	int add(PaiDuiJiLu pdjl);
+
+	boolean checkIfExist(Integer ddId,String qyh);
+
+	int updatePhdByDdId(Integer ddId,String qyh);
+
 }
