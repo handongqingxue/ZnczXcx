@@ -21,6 +21,8 @@ public class MainServiceImpl implements MainService {
 	@Autowired
 	private ZhiJianJiLuMapper zhiJianJiLuDao;
 	@Autowired
+	private BangDanJiLuMapper bangDanJiLuDao;
+	@Autowired
 	private GuoBangJiLuMapper guoBangJiLuDao;
 
 	public boolean createTabByQyh(String qyh) {
@@ -34,6 +36,8 @@ public class MainServiceImpl implements MainService {
 			paiDuiJiLuDao.createTabByQyh(qyh);
 		if(mainDao.getTabCountByTabName(Main.ZHI_JIAN_JI_LU+"_"+qyh)==0)
 			zhiJianJiLuDao.createTabByQyh(qyh);
+		if(mainDao.getTabCountByTabName(Main.BANG_DAN_JI_LU+"_"+qyh)==0)
+			bangDanJiLuDao.createTabByQyh(qyh);
 		if(mainDao.getTabCountByTabName(Main.GUO_BANG_JI_LU+"_"+qyh)==0)
 			guoBangJiLuDao.createTabByQyh(qyh);
 		return bool;

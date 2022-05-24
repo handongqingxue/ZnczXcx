@@ -24,6 +24,6 @@ public interface PaiDuiJiLuMapper {
 
 	Integer getTodayLastPdh(@Param("qyh") String qyh);
 
-	int updatePhdByDdId(@Param("lastPdh") Integer lastPdh, @Param("ddId") Integer ddId, @Param("qyh") String qyh);
+	int updatePhdByDdId(@Param("pdh") Integer pdh, @Param("ddId") Integer ddId, @Param("qyh") String qyh);
 
 }

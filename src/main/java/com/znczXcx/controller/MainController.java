@@ -36,6 +36,8 @@ public class MainController {
 	private PaiDuiJiLuService paiDuiJiLuService;
 	@Autowired
 	private ZhiJianJiLuService zhiJianJiLuService;
+	@Autowired
+	private BangDanJiLuService bangDanJiLuService;
 
 	/**
 	 * Ìø×ªµ½µÇÂ¼Ò³
@@ -227,6 +229,25 @@ public class MainController {
 		System.out.println("size==="+ddList.size());
 		int count=dingDanService.addToYf(ddList,qyh);
 		if(count==ddList.size()) {
+			jsonMap.put("status", "ok");
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/addBDJLToYf")
+	@ResponseBody
+	public Map<String, Object> addBDJLToYf(String qyh, String bdjlJAStr) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		System.out.println("bdjlJAStr==="+bdjlJAStr);
+		JSONArray bdjlJA = JSONArray.fromObject(bdjlJAStr);
+		List<BangDanJiLu> bdjlList = JSONArray.toList(bdjlJA, BangDanJiLu.class);
+		System.out.println("size==="+bdjlList.size());
+		int count=bangDanJiLuService.addToYf(bdjlList,qyh);
+		if(count==bdjlList.size()) {
 			jsonMap.put("status", "ok");
 		}
 		else {

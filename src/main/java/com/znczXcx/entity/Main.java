@@ -6,6 +6,7 @@ public class Main {
 	public static final String DING_DAN="ding_dan";
 	public static final String PAI_DUI_JI_LU="pai_dui_ji_lu";
 	public static final String ZHI_JIAN_JI_LU="zhi_jian_ji_lu";
+	public static final String BANG_DAN_JI_LU="bang_dan_ji_lu";
 	public static final String GUO_BANG_JI_LU="guo_bang_ji_lu";
 	
 	public static final Integer WEI_TONG_BU=1;//Î´Í¬²½

@@ -48,6 +48,6 @@ public class PaiDuiJiLuServiceImpl implements PaiDuiJiLuService {
 	public int updatePhdByDdId(Integer ddId,String qyh) {
 		// TODO Auto-generated method stub
 		Integer lastPdh=paiDuiJiLuDao.getTodayLastPdh(qyh);
-		return paiDuiJiLuDao.updatePhdByDdId(lastPdh++,ddId,qyh);
+		return paiDuiJiLuDao.updatePhdByDdId(++lastPdh,ddId,qyh);
 	}
 }

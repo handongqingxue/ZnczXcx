@@ -6,4 +6,7 @@
 	<select id="getTabCountByTabName" resultType="java.lang.Integer">
 		select count(*) from information_schema.TABLES where table_schema='zncz_xcx' and table_name=#{tabName}
 	</select>
+	<select id="getYfwColValByQyColVal" resultType="java.lang.Object">
+		select ${yfwColName} from ${tabName}_${qyh} where ${qyColName}=${qyColVal}
+	</select>
 </mapper>
