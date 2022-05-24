@@ -38,6 +38,8 @@ public class MainController {
 	private ZhiJianJiLuService zhiJianJiLuService;
 	@Autowired
 	private BangDanJiLuService bangDanJiLuService;
+	@Autowired
+	private GuoBangJiLuService guoBangJiLuService;
 
 	/**
 	 * Ìø×ªµ½µÇÂ¼Ò³
@@ -248,6 +250,25 @@ public class MainController {
 		System.out.println("size==="+bdjlList.size());
 		int count=bangDanJiLuService.addToYf(bdjlList,qyh);
 		if(count==bdjlList.size()) {
+			jsonMap.put("status", "ok");
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/addGBJLToYf")
+	@ResponseBody
+	public Map<String, Object> addGBJLToYf(String qyh, String gbjlJAStr) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		System.out.println("gbjlJAStr==="+gbjlJAStr);
+		JSONArray gbjlJA = JSONArray.fromObject(gbjlJAStr);
+		List<GuoBangJiLu> gbjlList = JSONArray.toList(gbjlJA, GuoBangJiLu.class);
+		System.out.println("size==="+gbjlList.size());
+		int count=guoBangJiLuService.addToYf(gbjlList,qyh);
+		if(count==gbjlList.size()) {
 			jsonMap.put("status", "ok");
 		}
 		else {

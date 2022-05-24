@@ -19,4 +19,78 @@
 		  PRIMARY KEY (`id`) USING BTREE
 		) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 	</update>
+	<insert id="add" parameterType="com.znczXcx.entity.GuoBangJiLu">
+		insert into `guo_bang_ji_lu_${qyh}`
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="qyjlId!=null">
+				qyjlId,
+			</if>
+			<if test="gbzl!=null">
+				gbzl,
+			</if>
+			<if test="zp1!=null">
+				zp1,
+			</if>
+			<if test="zp2!=null">
+				zp2,
+			</if>
+			<if test="zp3!=null">
+				zp3,
+			</if>
+			<if test="gbzt!=null">
+				gbzt,
+			</if>
+			<if test="gbsj!=null">
+				gbsj,
+			</if>
+			<if test="gblx!=null">
+				gblx,
+			</if>
+			<if test="yfwDdId!=null">
+				yfwDdId,
+			</if>
+			<if test="qyDdId!=null">
+				qyDdId,
+			</if>
+			<if test="qytb!=null">
+				qytb,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="qyjlId!=null">
+				#{qyjlId},
+			</if>
+			<if test="gbzl!=null">
+				#{gbzl},
+			</if>
+			<if test="zp1!=null">
+				#{zp1},
+			</if>
+			<if test="zp2!=null">
+				#{zp2},
+			</if>
+			<if test="zp3!=null">
+				#{zp3},
+			</if>
+			<if test="gbzt!=null">
+				#{gbzt},
+			</if>
+			<if test="gbsj!=null">
+				#{gbsj},
+			</if>
+			<if test="gblx!=null">
+				#{gblx},
+			</if>
+			<if test="yfwDdId!=null">
+				#{yfwDdId},
+			</if>
+			<if test="qyDdId!=null">
+				#{qyDdId},
+			</if>
+			<if test="qytb!=null">
+				#{qytb},
+			</if>
+		</trim>
+	</insert>
 </mapper>

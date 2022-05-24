@@ -17,7 +17,7 @@
 		  PRIMARY KEY (`id`) USING BTREE
 		) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 	</update>
-	<insert id="add" parameterType="com.znczXcx.entity.ZhiJianJiLu">
+	<insert id="add" parameterType="com.znczXcx.entity.BangDanJiLu">
 		insert into `bang_dan_ji_lu_${qyh}`
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="qyjlId!=null">
