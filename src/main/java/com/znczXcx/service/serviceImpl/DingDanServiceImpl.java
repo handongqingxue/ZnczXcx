@@ -1,5 +1,6 @@
 package com.znczXcx.service.serviceImpl;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.znczXcx.dao.*;
 import com.znczXcx.entity.*;
 import com.znczXcx.service.*;
+import com.znczXcx.util.*;
 
 @Service
 public class DingDanServiceImpl implements DingDanService {
@@ -22,7 +24,21 @@ public class DingDanServiceImpl implements DingDanService {
 			dingDan.setQyjlId(dd.getId());
 			dingDan.setQytb(Main.YI_TONG_BU);
 			dingDan.setQyh(qyh);
-			count+=dingDanDao.add(dd);
+
+	    	String ddh = dingDan.getDdh();
+			String fileName = ddh + ".jpg";
+			File file = new File("D:/resource/ZnczXcx/DDQrcode/"+fileName);
+		    //判断文件或文件夹是否存在
+		    boolean flag = file.exists();
+		    if(!flag) {
+				String avaPath="/ZnczXcx/upload/DDQrcode/"+fileName;
+				String path = "D:/resource/ZnczXcx/DDQrcode";
+		        QrcodeUtil.createQrCode(ddh, path, fileName);
+				
+		        dingDan.setEwmlj(avaPath);
+		    }
+		    
+			count+=dingDanDao.add(dingDan);
 		}
 		return count;
 	}

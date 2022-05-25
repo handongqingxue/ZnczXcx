@@ -81,6 +81,9 @@
 				shbmId,
 			</if>
 				bjsj,
+			<if test="ewmlj!=null">
+				ewmlj,
+			</if>
 			<if test="qytb!=null">
 				qytb,
 			</if>
@@ -135,6 +138,9 @@
 				#{shbmId},
 			</if>
 				now(),
+			<if test="ewmlj!=null">
+				#{ewmlj},
+			</if>
 			<if test="qytb!=null">
 				#{qytb},
 			</if>

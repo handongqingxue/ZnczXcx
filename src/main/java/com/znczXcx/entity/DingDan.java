@@ -218,6 +218,12 @@ public class DingDan {
 	public void setBjsj(String bjsj) {
 		this.bjsj = bjsj;
 	}
+	public String getEwmlj() {
+		return ewmlj;
+	}
+	public void setEwmlj(String ewmlj) {
+		this.ewmlj = ewmlj;
+	}
 	public Integer getQytb() {
 		return qytb;
 	}
@@ -260,6 +266,7 @@ public class DingDan {
 	private Integer shbmId;
 	private String shbmMc;
 	private String bjsj;//编辑时间
+	private String ewmlj;
 	private Integer qytb;//企业同步 1.未同步 2.同步中 3.已同步
 	private String qyh;
 }

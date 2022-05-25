@@ -1,5 +1,7 @@
 package com.znczXcx.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -275,5 +277,24 @@ public class MainController {
 			jsonMap.put("status", "no");
 		}
 		return jsonMap;
+	}
+	
+	public static void main(String[] args) {
+		//判断文件是否存在如果存在就删除，不存在就新建
+	    String path = "D:/resource/ZnczXcx/111.txt";
+	    File file = new File(path);
+	    //判断文件或文件夹是否存在
+	    boolean flag = file.exists();
+	    System.out.println("flag==="+flag);
+	    if(flag)
+	    {
+	        //文件存在就要删除文件
+	        file.delete();
+	    }
+	    else
+	    {
+	        //文件不存在就要新建文件
+			//file.createNewFile();
+	    }
 	}
 }
