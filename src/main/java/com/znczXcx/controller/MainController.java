@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.znczXcx.service.*;
+import com.znczXcx.dao.FaHuoDanWeiMapper;
 import com.znczXcx.entity.*;
 import com.znczXcx.util.*;
 
@@ -34,6 +35,8 @@ public class MainController {
 	private MainService mainService;
 	@Autowired
 	private YunShuShangService yunShuShangService;
+	@Autowired
+	private FaHuoDanWeiService faHuoDanWeiService;
 	@Autowired
 	private DingDanService dingDanService;
 	@Autowired
@@ -292,6 +295,25 @@ public class MainController {
 		System.out.println("size==="+yssList.size());
 		int count=yunShuShangService.addToYf(yssList,qyh);
 		if(count==yssList.size()) {
+			jsonMap.put("status", "ok");
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/addFHDWToYf")
+	@ResponseBody
+	public Map<String, Object> addFHDWToYf(String qyh, String fhdwJAStr) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		System.out.println("fhdwJAStr==="+fhdwJAStr);
+		JSONArray fhdwJA = JSONArray.fromObject(fhdwJAStr);
+		List<FaHuoDanWei> fhdwList = JSONArray.toList(fhdwJA, FaHuoDanWei.class);
+		System.out.println("size==="+fhdwList.size());
+		int count=faHuoDanWeiService.addToYf(fhdwList,qyh);
+		if(count==fhdwList.size()) {
 			jsonMap.put("status", "ok");
 		}
 		else {

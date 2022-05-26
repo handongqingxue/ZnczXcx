@@ -17,6 +17,8 @@ public class MainServiceImpl implements MainService {
 	@Autowired
 	private YunShuShangMapper yunShuShangDao;
 	@Autowired
+	private FaHuoDanWeiMapper faHuoDanWeiDao;
+	@Autowired
 	private DingDanMapper dingDanDao;
 	@Autowired
 	private PaiDuiJiLuMapper paiDuiJiLuDao;
@@ -34,6 +36,8 @@ public class MainServiceImpl implements MainService {
 			yongHuDao.createTabByQyh(qyh);
 		if(mainDao.getTabCountByTabName(Main.YUN_SHU_SHANG+"_"+qyh)==0)
 			yunShuShangDao.createTabByQyh(qyh);
+		if(mainDao.getTabCountByTabName(Main.FA_HUO_DAN_WEI+"_"+qyh)==0)
+			faHuoDanWeiDao.createTabByQyh(qyh);
 		if(mainDao.getTabCountByTabName(Main.DING_DAN+"_"+qyh)==0)
 			dingDanDao.createTabByQyh(qyh);
 		if(mainDao.getTabCountByTabName(Main.PAI_DUI_JI_LU+"_"+qyh)==0)
