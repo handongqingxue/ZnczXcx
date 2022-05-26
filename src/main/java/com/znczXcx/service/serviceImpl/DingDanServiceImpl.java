@@ -43,4 +43,10 @@ public class DingDanServiceImpl implements DingDanService {
 		return count;
 	}
 
+	@Override
+	public DingDan selectByDdh(String ddh, String qyh) {
+		// TODO Auto-generated method stub
+		return dingDanDao.selectByDdh(ddh, qyh);
+	}
+
 }

@@ -16,6 +16,8 @@ import com.znczXcx.service.*;
 public class XCXController {
 
 	@Autowired
+	private DingDanService dingDanService;
+	@Autowired
 	private PaiDuiJiLuService paiDuiJiLuService;
 	@Autowired
 	private ZhiJianJiLuService zhiJianJiLuService;
@@ -61,6 +63,24 @@ public class XCXController {
 		else {
 			jsonMap.put("message", "no");
 			jsonMap.put("info", "创建质检记录失败！");
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/getDingDanByDdh")
+	@ResponseBody
+	public Map<String, Object> getDingDanByDdh(String ddh, String qyh) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		DingDan dingDan = dingDanService.selectByDdh(ddh, qyh);
+		if(dingDan!=null) {
+			jsonMap.put("message", "ok");
+			jsonMap.put("dingDan", dingDan);
+		}
+		else {
+			jsonMap.put("message", "no");
+			jsonMap.put("info", "没有找到相关订单！");
 		}
 		return jsonMap;
 	}

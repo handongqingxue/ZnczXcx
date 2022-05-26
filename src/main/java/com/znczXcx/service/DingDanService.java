@@ -8,4 +8,6 @@ public interface DingDanService {
 
 	int addToYf(List<DingDan> ddList, String qyh);
 
+	DingDan selectByDdh(String ddh, String qyh);
+
 }
