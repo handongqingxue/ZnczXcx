@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.znczXcx.service.*;
-import com.znczXcx.dao.FaHuoDanWeiMapper;
 import com.znczXcx.entity.*;
 import com.znczXcx.util.*;
 
@@ -37,6 +36,8 @@ public class MainController {
 	private YunShuShangService yunShuShangService;
 	@Autowired
 	private FaHuoDanWeiService faHuoDanWeiService;
+	@Autowired
+	private ShouHuoBuMenService shouHuoBuMenService;
 	@Autowired
 	private DingDanService dingDanService;
 	@Autowired
@@ -314,6 +315,25 @@ public class MainController {
 		System.out.println("size==="+fhdwList.size());
 		int count=faHuoDanWeiService.addToYf(fhdwList,qyh);
 		if(count==fhdwList.size()) {
+			jsonMap.put("status", "ok");
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/addSHBMToYf")
+	@ResponseBody
+	public Map<String, Object> addSHBMToYf(String qyh, String shbmJAStr) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		System.out.println("shbmJAStr==="+shbmJAStr);
+		JSONArray shbmJA = JSONArray.fromObject(shbmJAStr);
+		List<ShouHuoBuMen> shbmList = JSONArray.toList(shbmJA, ShouHuoBuMen.class);
+		System.out.println("size==="+shbmList.size());
+		int count=shouHuoBuMenService.addToYf(shbmList,qyh);
+		if(count==shbmList.size()) {
 			jsonMap.put("status", "ok");
 		}
 		else {
