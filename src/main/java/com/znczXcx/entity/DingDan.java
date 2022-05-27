@@ -50,11 +50,17 @@ public class DingDan {
 	public void setDdh(String ddh) {
 		this.ddh = ddh;
 	}
-	public Integer getDdztId() {
-		return ddztId;
+	public Integer getYfwDdztId() {
+		return yfwDdztId;
 	}
-	public void setDdztId(Integer ddztId) {
-		this.ddztId = ddztId;
+	public void setYfwDdztId(Integer yfwDdztId) {
+		this.yfwDdztId = yfwDdztId;
+	}
+	public Integer getQyDdztId() {
+		return qyDdztId;
+	}
+	public void setQyDdztId(Integer qyDdztId) {
+		this.qyDdztId = qyDdztId;
 	}
 	public String getDdztMc() {
 		return ddztMc;
@@ -152,11 +158,17 @@ public class DingDan {
 	public void setZlceb(Float zlceb) {
 		this.zlceb = zlceb;
 	}
-	public Integer getWzlxId() {
-		return wzlxId;
+	public Integer getYfwWzlxId() {
+		return yfwWzlxId;
 	}
-	public void setWzlxId(Integer wzlxId) {
-		this.wzlxId = wzlxId;
+	public void setYfwWzlxId(Integer yfwWzlxId) {
+		this.yfwWzlxId = yfwWzlxId;
+	}
+	public Integer getQyWzlxId() {
+		return qyWzlxId;
+	}
+	public void setQyWzlxId(Integer qyWzlxId) {
+		this.qyWzlxId = qyWzlxId;
 	}
 	public String getWzlxMc() {
 		return wzlxMc;
@@ -164,11 +176,17 @@ public class DingDan {
 	public void setWzlxMc(String wzlxMc) {
 		this.wzlxMc = wzlxMc;
 	}
-	public Integer getWzId() {
-		return wzId;
+	public Integer getYfwWzId() {
+		return yfwWzId;
 	}
-	public void setWzId(Integer wzId) {
-		this.wzId = wzId;
+	public void setYfwWzId(Integer yfwWzId) {
+		this.yfwWzId = yfwWzId;
+	}
+	public Integer getQyWzId() {
+		return qyWzId;
+	}
+	public void setQyWzId(Integer qyWzId) {
+		this.qyWzId = qyWzId;
 	}
 	public String getWzMc() {
 		return wzMc;
@@ -176,11 +194,17 @@ public class DingDan {
 	public void setWzMc(String wzMc) {
 		this.wzMc = wzMc;
 	}
-	public Integer getYssId() {
-		return yssId;
+	public Integer getYfwYssId() {
+		return yfwYssId;
 	}
-	public void setYssId(Integer yssId) {
-		this.yssId = yssId;
+	public void setYfwYssId(Integer yfwYssId) {
+		this.yfwYssId = yfwYssId;
+	}
+	public Integer getQyYssId() {
+		return qyYssId;
+	}
+	public void setQyYssId(Integer qyYssId) {
+		this.qyYssId = qyYssId;
 	}
 	public String getYssMc() {
 		return yssMc;
@@ -188,11 +212,17 @@ public class DingDan {
 	public void setYssMc(String yssMc) {
 		this.yssMc = yssMc;
 	}
-	public Integer getFhdwId() {
-		return fhdwId;
+	public Integer getYfwFhdwId() {
+		return yfwFhdwId;
 	}
-	public void setFhdwId(Integer fhdwId) {
-		this.fhdwId = fhdwId;
+	public void setYfwFhdwId(Integer yfwFhdwId) {
+		this.yfwFhdwId = yfwFhdwId;
+	}
+	public Integer getQyFhdwId() {
+		return qyFhdwId;
+	}
+	public void setQyFhdwId(Integer qyFhdwId) {
+		this.qyFhdwId = qyFhdwId;
 	}
 	public String getFhdwMc() {
 		return fhdwMc;
@@ -200,11 +230,17 @@ public class DingDan {
 	public void setFhdwMc(String fhdwMc) {
 		this.fhdwMc = fhdwMc;
 	}
-	public Integer getShbmId() {
-		return shbmId;
+	public Integer getYfwShbmId() {
+		return yfwShbmId;
 	}
-	public void setShbmId(Integer shbmId) {
-		this.shbmId = shbmId;
+	public void setYfwShbmId(Integer yfwShbmId) {
+		this.yfwShbmId = yfwShbmId;
+	}
+	public Integer getQyShbmId() {
+		return qyShbmId;
+	}
+	public void setQyShbmId(Integer qyShbmId) {
+		this.qyShbmId = qyShbmId;
 	}
 	public String getShbmMc() {
 		return shbmMc;
@@ -238,7 +274,8 @@ public class DingDan {
 	}
 	private Integer qyjlId;
 	private String ddh;//订单号
-	private Integer ddztId;
+	private Integer yfwDdztId;
+	private Integer qyDdztId;
 	private String ddztMc;
 	private Integer xddztId;//新订单状态id
 	private String xddztMc;//新订单状态名称
@@ -255,15 +292,20 @@ public class DingDan {
 	private Float yzxzl;//预装卸重量
 	private Float sjzl;//实际重量
 	private Float zlceb;//重量差额比
-	private Integer wzlxId;
+	private Integer yfwWzlxId;
+	private Integer qyWzlxId;
 	private String wzlxMc;
-	private Integer wzId;
+	private Integer yfwWzId;
+	private Integer qyWzId;
 	private String wzMc;
-	private Integer yssId;
+	private Integer yfwYssId;
+	private Integer qyYssId;
 	private String yssMc;
-	private Integer fhdwId;
+	private Integer yfwFhdwId;
+	private Integer qyFhdwId;
 	private String fhdwMc;
-	private Integer shbmId;
+	private Integer yfwShbmId;
+	private Integer qyShbmId;
 	private String shbmMc;
 	private String bjsj;//编辑时间
 	private String ewmlj;

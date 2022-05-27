@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.znczXcx.dao.DingDanZhuangTaiMapper">
+	<update id="createTabByQyh">
+		CREATE TABLE `ding_dan_zhuang_tai_${qyh}`  (
+		  `id` int NOT NULL AUTO_INCREMENT,
+		  `qyjlId` int NULL DEFAULT NULL,
+		  `mc` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+		  `px` int NULL DEFAULT 0,
+		  `qytb` int NULL DEFAULT 1,
+		  PRIMARY KEY (`id`) USING BTREE
+		) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+	</update>
+	<insert id="add" parameterType="com.znczXcx.entity.YunShuShang">
+		insert into `ding_dan_zhuang_tai_${qyh}`
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="qyjlId!=null">
+				qyjlId,
+			</if>
+			<if test="mc!=null">
+				mc,
+			</if>
+			<if test="px!=null">
+				px,
+			</if>
+			<if test="qytb!=null">
+				qytb,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="qyjlId!=null">
+				#{qyjlId},
+			</if>
+			<if test="mc!=null">
+				#{mc},
+			</if>
+			<if test="px!=null">
+				#{px},
+			</if>
+			<if test="qytb!=null">
+				#{qytb},
+			</if>
+		</trim>
+	</insert>
+</mapper>
