@@ -4,9 +4,9 @@ import org.apache.ibatis.annotations.Param;
 
 import com.znczXcx.entity.*;
 
-public interface WuZiLeiXingMapper {
+public interface WuZiMapper {
 
 	int createTabByQyh(@Param("qyh") String qyh);
 
-	int add(WuZiLeiXing wuZiLeiXing);
+	int add(WuZi wuZi);
 }

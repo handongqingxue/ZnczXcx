@@ -33,6 +33,10 @@ public class MainController {
 	@Autowired
 	private MainService mainService;
 	@Autowired
+	private WuZiLeiXingService wuZiLeiXingService;
+	@Autowired
+	private WuZiService wuZiService;
+	@Autowired
 	private YunShuShangService yunShuShangService;
 	@Autowired
 	private FaHuoDanWeiService faHuoDanWeiService;
@@ -298,6 +302,44 @@ public class MainController {
 		System.out.println("size==="+gbjlList.size());
 		int count=guoBangJiLuService.addToYf(gbjlList,qyh);
 		if(count==gbjlList.size()) {
+			jsonMap.put("status", "ok");
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/addWZLXToYf")
+	@ResponseBody
+	public Map<String, Object> addWZLXToYf(String qyh, String wzlxJAStr) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		System.out.println("wzlxJAStr==="+wzlxJAStr);
+		JSONArray wzlxJA = JSONArray.fromObject(wzlxJAStr);
+		List<WuZiLeiXing> wzlxList = JSONArray.toList(wzlxJA, WuZiLeiXing.class);
+		System.out.println("size==="+wzlxList.size());
+		int count=wuZiLeiXingService.addToYf(wzlxList,qyh);
+		if(count==wzlxList.size()) {
+			jsonMap.put("status", "ok");
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/addWZToYf")
+	@ResponseBody
+	public Map<String, Object> addWZToYf(String qyh, String wzJAStr) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		System.out.println("wzJAStr==="+wzJAStr);
+		JSONArray wzJA = JSONArray.fromObject(wzJAStr);
+		List<WuZi> wzList = JSONArray.toList(wzJA, WuZi.class);
+		System.out.println("size==="+wzList.size());
+		int count=wuZiService.addToYf(wzList,qyh);
+		if(count==wzList.size()) {
 			jsonMap.put("status", "ok");
 		}
 		else {

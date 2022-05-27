@@ -4,6 +4,7 @@ public class Main {
 
 	public static final String YONG_HU="yong_hu";
 	public static final String DING_DAN_ZHUANG_TAI="ding_dan_zhuang_tai";
+	public static final String WU_ZI="wu_zi";
 	public static final String WU_ZI_LEI_XING="wu_zi_lei_xing";
 	public static final String YUN_SHU_SHANG="yun_shu_shang";
 	public static final String FA_HUO_DAN_WEI="fa_huo_dan_wei";
