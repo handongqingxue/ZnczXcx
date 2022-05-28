@@ -33,35 +33,35 @@ public class DingDanServiceImpl implements DingDanService {
 			}
 
 			//获取云服务端物资类型id
-			Object yfwWzlxIdObj = mainDao.getYfwColValByQyColVal("yfwWzlxId", dd.getQyWzlxId()+"", "qyWzlxId", "yun_shu_shang", "yuejiazhuang");
+			Object yfwWzlxIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyWzlxId()+"", "qyjlId", "wu_zi_lei_xing", "yuejiazhuang");
 			if(yfwWzlxIdObj!=null) {
 				Integer yfwWzlxId=Integer.valueOf(yfwWzlxIdObj.toString());
 				dingDan.setYfwWzlxId(yfwWzlxId);
 			}
 
 			//获取云服务端物资id
-			Object yfwWzIdObj = mainDao.getYfwColValByQyColVal("yfwWzId", dd.getQyWzId()+"", "qyWzId", "yun_shu_shang", "yuejiazhuang");
+			Object yfwWzIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyWzId()+"", "qyjlId", "wu_zi", "yuejiazhuang");
 			if(yfwWzIdObj!=null) {
 				Integer yfwWzId=Integer.valueOf(yfwWzIdObj.toString());
 				dingDan.setYfwWzId(yfwWzId);
 			}
 			
 			//获取云服务端运输商id
-			Object yfwYssIdObj = mainDao.getYfwColValByQyColVal("yfwYssId", dd.getQyYssId()+"", "qyYssId", "yun_shu_shang", "yuejiazhuang");
+			Object yfwYssIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyYssId()+"", "qyjlId", "yun_shu_shang", "yuejiazhuang");
 			if(yfwYssIdObj!=null) {
 				Integer yfwYssId=Integer.valueOf(yfwYssIdObj.toString());
 				dingDan.setYfwYssId(yfwYssId);
 			}
 			
 			//获取云服务端发货单位id
-			Object yfwFhdwIdObj = mainDao.getYfwColValByQyColVal("yfwFhdwId", dd.getQyFhdwId()+"", "qyFhdwId", "yun_shu_shang", "yuejiazhuang");
+			Object yfwFhdwIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyFhdwId()+"", "qyjlId", "fa_huo_dan_wei", "yuejiazhuang");
 			if(yfwFhdwIdObj!=null) {
 				Integer yfwFhdwId=Integer.valueOf(yfwFhdwIdObj.toString());
 				dingDan.setYfwFhdwId(yfwFhdwId);
 			}
 			
 			//获取云服务端收货部门id
-			Object yfwShbmIdObj = mainDao.getYfwColValByQyColVal("yfwShbmId", dd.getQyFhdwId()+"", "qyShbmId", "yun_shu_shang", "yuejiazhuang");
+			Object yfwShbmIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyShbmId()+"", "qyjlId", "shou_huo_bu_men", "yuejiazhuang");
 			if(yfwShbmIdObj!=null) {
 				Integer yfwShbmId=Integer.valueOf(yfwShbmIdObj.toString());
 				dingDan.setYfwShbmId(yfwShbmId);

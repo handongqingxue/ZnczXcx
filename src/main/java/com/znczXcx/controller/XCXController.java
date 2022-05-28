@@ -3,6 +3,8 @@ package com.znczXcx.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,7 +71,7 @@ public class XCXController {
 
 	@RequestMapping(value="/getDingDanByDdh")
 	@ResponseBody
-	public Map<String, Object> getDingDanByDdh(String ddh, String qyh) {
+	public Map<String, Object> getDingDanByDdh(String ddh, String qyh, HttpServletRequest request) {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		
@@ -77,6 +79,7 @@ public class XCXController {
 		if(dingDan!=null) {
 			jsonMap.put("message", "ok");
 			jsonMap.put("dingDan", dingDan);
+			jsonMap.put("zjpdzDdztMc", DingDanZhuangTai.ZHI_JIAN_PAI_DUI_ZHONG_TEXT);
 		}
 		else {
 			jsonMap.put("message", "no");
