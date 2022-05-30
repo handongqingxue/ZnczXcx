@@ -83,7 +83,10 @@ public class DingDanServiceImpl implements DingDanService {
 		        dingDan.setEwmlj(avaPath);
 		    }
 		    
-			count+=dingDanDao.add(dingDan);
+		    if(dingDanDao.getCountByQyjlId(dingDan.getQyjlId(),qyh)==0)
+		    	count+=dingDanDao.add(dingDan);
+		    else
+		    	count+=dingDanDao.edit(dingDan);
 		}
 		return count;
 	}

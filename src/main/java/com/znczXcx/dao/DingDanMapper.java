@@ -10,6 +10,10 @@ public interface DingDanMapper {
 
 	int add(DingDan dd);
 
+	int edit(DingDan dingDan);
+
+	int getCountByQyjlId(@Param("qyjlId") Integer qyjlId, @Param("qyh") String qyh);
+
 	DingDan selectByDdh(@Param("ddh") String ddh, @Param("qyh") String qyh);
 
 }
