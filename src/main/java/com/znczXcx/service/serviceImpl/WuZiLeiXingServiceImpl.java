@@ -29,7 +29,11 @@ public class WuZiLeiXingServiceImpl implements WuZiLeiXingService {
 			wuZiLeiXing.setBz(wzlx.getBz());
 			wuZiLeiXing.setQytb(Main.YI_TONG_BU);
 			wuZiLeiXing.setQyh(qyh);
-			count+=wuZiLeiXingDao.add(wuZiLeiXing);
+			
+		    if(wuZiLeiXingDao.getCountByQyjlId(wuZiLeiXing.getQyjlId(),qyh)==0)
+		    	count+=wuZiLeiXingDao.add(wuZiLeiXing);
+		    else
+		    	count+=wuZiLeiXingDao.edit(wuZiLeiXing);
 		}
 		return count;
 	}

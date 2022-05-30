@@ -10,4 +10,8 @@ public interface BangDanJiLuMapper {
 
 	int add(BangDanJiLu bangDanJiLu);
 
+	int getCountByQyjlId(@Param("qyjlId") Integer qyjlId, @Param("qyh") String qyh);
+
+	int edit(BangDanJiLu bangDanJiLu);
+
 }

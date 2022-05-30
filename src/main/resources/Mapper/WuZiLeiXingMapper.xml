@@ -66,4 +66,25 @@
 			</if>
 		</trim>
 	</insert>
+	<update id="edit" parameterType="com.znczXcx.entity.DingDan">
+		update `wu_zi_lei_xing_${qyh}` set
+		<trim suffixOverrides=",">
+			<if test="mc!=null">
+				mc=#{mc},
+			</if>
+			<if test="px!=null">
+				px=#{px},
+			</if>
+			<if test="bz!=null">
+				bz=#{bz},
+			</if>
+			<if test="qytb!=null">
+				qytb=#{qytb},
+			</if>
+		</trim>
+		where qyjlId=#{qyjlId}
+	</update>
+	<select id="getCountByQyjlId" resultType="java.lang.Integer">
+		select count(*) from `wu_zi_lei_xing_${qyh}` where qyjlId=#{qyjlId}
+	</select>
 </mapper>

@@ -29,7 +29,11 @@ public class BangDanJiLuServiceImpl implements BangDanJiLuService {
 			}
 			bangDanJiLu.setQytb(Main.YI_TONG_BU);
 			bangDanJiLu.setQyh(qyh);
-			count+=bangDanJiLuDao.add(bangDanJiLu);
+			
+		    if(bangDanJiLuDao.getCountByQyjlId(bangDanJiLu.getQyjlId(),qyh)==0)
+		    	count+=bangDanJiLuDao.add(bangDanJiLu);
+		    else
+		    	count+=bangDanJiLuDao.edit(bangDanJiLu);
 		}
 		return count;
 	}

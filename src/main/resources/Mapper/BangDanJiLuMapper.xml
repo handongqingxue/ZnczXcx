@@ -67,4 +67,25 @@
 			</if>
 		</trim>
 	</insert>
+	<select id="getCountByQyjlId" resultType="java.lang.Integer">
+		select count(*) from `bang_dan_ji_lu_${qyh}` where qyjlId=#{qyjlId}
+	</select>
+	<update id="edit" parameterType="com.znczXcx.entity.DingDan">
+		update `bang_dan_ji_lu_${qyh}` set
+		<trim suffixOverrides=",">
+			<if test="mz!=null">
+				mz=#{mz},
+			</if>
+			<if test="pz!=null">
+				pz=#{pz},
+			</if>
+			<if test="jz!=null">
+				jz=#{jz},
+			</if>
+			<if test="qytb!=null">
+				qytb=#{qytb},
+			</if>
+		</trim>
+		where qyjlId=#{qyjlId}
+	</update>
 </mapper>
