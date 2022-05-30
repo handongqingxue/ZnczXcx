@@ -6,6 +6,6 @@ import com.znczXcx.entity.*;
 
 public interface YunShuShangService {
 
-	int addToYf(List<YunShuShang> yssList, String qyh);
+	int syncToYf(List<YunShuShang> yssList, String qyh);
 
 }

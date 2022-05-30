@@ -6,7 +6,7 @@ import com.znczXcx.entity.*;
 
 public interface DingDanService {
 
-	int addToYf(List<DingDan> ddList, String qyh);
+	int syncToYf(List<DingDan> ddList, String qyh);
 
 	DingDan selectByDdh(String ddh, String qyh);
 

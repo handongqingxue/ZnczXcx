@@ -16,7 +16,7 @@ public class ShouHuoBuMenServiceImpl implements ShouHuoBuMenService {
 	private ShouHuoBuMenMapper shouHuoBuMenDao;
 
 	@Override
-	public int addToYf(List<ShouHuoBuMen> shbmList, String qyh) {
+	public int syncToYf(List<ShouHuoBuMen> shbmList, String qyh) {
 		// TODO Auto-generated method stub
 		int count=0;
 		for (ShouHuoBuMen shbm : shbmList) {
@@ -26,7 +26,11 @@ public class ShouHuoBuMenServiceImpl implements ShouHuoBuMenService {
 			shouHuoBuMen.setBjsj(shbm.getBjsj());
 			shouHuoBuMen.setQytb(Main.YI_TONG_BU);
 			shouHuoBuMen.setQyh(qyh);
-			count+=shouHuoBuMenDao.add(shouHuoBuMen);
+			
+		    if(shouHuoBuMenDao.getCountByQyjlId(shouHuoBuMen.getQyjlId(),qyh)==0)
+		    	count+=shouHuoBuMenDao.add(shouHuoBuMen);
+		    else
+		    	count+=shouHuoBuMenDao.edit(shouHuoBuMen);
 		}
 		return count;
 	}

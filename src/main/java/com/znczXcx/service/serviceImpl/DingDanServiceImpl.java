@@ -18,7 +18,7 @@ public class DingDanServiceImpl implements DingDanService {
 	@Autowired
 	private MainMapper mainDao;
 
-	public int addToYf(List<DingDan> ddList, String qyh) {
+	public int syncToYf(List<DingDan> ddList, String qyh) {
 		// TODO Auto-generated method stub
 		int count=0;
 		for (DingDan dd : ddList) {

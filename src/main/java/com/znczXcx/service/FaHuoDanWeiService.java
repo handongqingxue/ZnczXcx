@@ -6,6 +6,6 @@ import com.znczXcx.entity.*;
 
 public interface FaHuoDanWeiService {
 
-	int addToYf(List<FaHuoDanWei> fhdwList, String qyh);
+	int syncToYf(List<FaHuoDanWei> fhdwList, String qyh);
 
 }

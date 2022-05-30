@@ -16,7 +16,7 @@ public class BangDanJiLuServiceImpl implements BangDanJiLuService {
 	@Autowired
 	private MainMapper mainDao;
 
-	public int addToYf(List<BangDanJiLu> bdjlList, String qyh) {
+	public int syncToYf(List<BangDanJiLu> bdjlList, String qyh) {
 		// TODO Auto-generated method stub
 		int count=0;
 		for (BangDanJiLu bdjl : bdjlList) {

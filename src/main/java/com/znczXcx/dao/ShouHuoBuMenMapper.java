@@ -9,4 +9,8 @@ public interface ShouHuoBuMenMapper {
 	int createTabByQyh(@Param("qyh") String qyh);
 
 	int add(ShouHuoBuMen shouHuoBuMen);
+
+	int getCountByQyjlId(@Param("qyjlId") Integer qyjlId, @Param("qyh") String qyh);
+
+	int edit(ShouHuoBuMen shouHuoBuMen);
 }

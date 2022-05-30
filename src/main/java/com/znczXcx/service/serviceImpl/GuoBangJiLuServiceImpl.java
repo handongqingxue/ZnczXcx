@@ -16,7 +16,7 @@ public class GuoBangJiLuServiceImpl implements GuoBangJiLuService {
 	@Autowired
 	private MainMapper mainDao;
 
-	public int addToYf(List<GuoBangJiLu> gbjlList, String qyh) {
+	public int syncToYf(List<GuoBangJiLu> gbjlList, String qyh) {
 		// TODO Auto-generated method stub
 		int count=0;
 		for (GuoBangJiLu gbjl : gbjlList) {

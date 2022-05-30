@@ -6,6 +6,6 @@ import com.znczXcx.entity.*;
 
 public interface GuoBangJiLuService {
 
-	int addToYf(List<GuoBangJiLu> gbjlList, String qyh);
+	int syncToYf(List<GuoBangJiLu> gbjlList, String qyh);
 
 }

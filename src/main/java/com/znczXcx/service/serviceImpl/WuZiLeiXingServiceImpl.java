@@ -16,7 +16,7 @@ public class WuZiLeiXingServiceImpl implements WuZiLeiXingService {
 	private WuZiLeiXingMapper wuZiLeiXingDao;
 
 	@Override
-	public int addToYf(List<WuZiLeiXing> wzlxList, String qyh) {
+	public int syncToYf(List<WuZiLeiXing> wzlxList, String qyh) {
 		// TODO Auto-generated method stub
 		int count=0;
 		for (WuZiLeiXing wzlx : wzlxList) {

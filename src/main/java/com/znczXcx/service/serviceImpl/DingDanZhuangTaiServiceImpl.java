@@ -16,7 +16,7 @@ public class DingDanZhuangTaiServiceImpl implements DingDanZhuangTaiService {
 	private DingDanZhuangTaiMapper dingDanZhuangTaiDao;
 
 	@Override
-	public int addToYf(List<DingDanZhuangTai> ddztList, String qyh) {
+	public int syncToYf(List<DingDanZhuangTai> ddztList, String qyh) {
 		// TODO Auto-generated method stub
 		int count=0;
 		for (DingDanZhuangTai ddzt : ddztList) {
@@ -26,7 +26,11 @@ public class DingDanZhuangTaiServiceImpl implements DingDanZhuangTaiService {
 			dingDanZhuangTai.setPx(ddzt.getPx());
 			dingDanZhuangTai.setQytb(Main.YI_TONG_BU);
 			dingDanZhuangTai.setQyh(qyh);
-			count+=dingDanZhuangTaiDao.add(dingDanZhuangTai);
+			
+		    if(dingDanZhuangTaiDao.getCountByQyjlId(dingDanZhuangTai.getQyjlId(),qyh)==0)
+		    	count+=dingDanZhuangTaiDao.add(dingDanZhuangTai);
+		    else
+		    	count+=dingDanZhuangTaiDao.edit(dingDanZhuangTai);
 		}
 		return count;
 	}

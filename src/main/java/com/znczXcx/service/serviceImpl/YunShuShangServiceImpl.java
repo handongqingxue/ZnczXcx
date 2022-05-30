@@ -16,7 +16,7 @@ public class YunShuShangServiceImpl implements YunShuShangService {
 	private YunShuShangMapper yunShuShangDao;
 
 	@Override
-	public int addToYf(List<YunShuShang> yssList, String qyh) {
+	public int syncToYf(List<YunShuShang> yssList, String qyh) {
 		// TODO Auto-generated method stub
 		int count=0;
 		for (YunShuShang yss : yssList) {
@@ -26,7 +26,11 @@ public class YunShuShangServiceImpl implements YunShuShangService {
 			yunShuShang.setBjsj(yss.getBjsj());
 			yunShuShang.setQytb(Main.YI_TONG_BU);
 			yunShuShang.setQyh(qyh);
-			count+=yunShuShangDao.add(yunShuShang);
+			
+		    if(yunShuShangDao.getCountByQyjlId(yunShuShang.getQyjlId(),qyh)==0)
+		    	count+=yunShuShangDao.add(yunShuShang);
+		    else
+		    	count+=yunShuShangDao.edit(yunShuShang);
 		}
 		return count;
 	}

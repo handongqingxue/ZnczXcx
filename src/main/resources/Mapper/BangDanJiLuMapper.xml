@@ -70,7 +70,7 @@
 	<select id="getCountByQyjlId" resultType="java.lang.Integer">
 		select count(*) from `bang_dan_ji_lu_${qyh}` where qyjlId=#{qyjlId}
 	</select>
-	<update id="edit" parameterType="com.znczXcx.entity.DingDan">
+	<update id="edit" parameterType="com.znczXcx.entity.BangDanJiLu">
 		update `bang_dan_ji_lu_${qyh}` set
 		<trim suffixOverrides=",">
 			<if test="mz!=null">

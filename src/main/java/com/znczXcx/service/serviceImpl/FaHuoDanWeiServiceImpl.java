@@ -16,7 +16,7 @@ public class FaHuoDanWeiServiceImpl implements FaHuoDanWeiService {
 	private FaHuoDanWeiMapper faHuoDanWeiDao;
 
 	@Override
-	public int addToYf(List<FaHuoDanWei> fhdwList, String qyh) {
+	public int syncToYf(List<FaHuoDanWei> fhdwList, String qyh) {
 		// TODO Auto-generated method stub
 		int count=0;
 		for (FaHuoDanWei fhdw : fhdwList) {
@@ -26,7 +26,11 @@ public class FaHuoDanWeiServiceImpl implements FaHuoDanWeiService {
 			faHuoDanWei.setBjsj(fhdw.getBjsj());
 			faHuoDanWei.setQytb(Main.YI_TONG_BU);
 			faHuoDanWei.setQyh(qyh);
-			count+=faHuoDanWeiDao.add(faHuoDanWei);
+			
+		    if(faHuoDanWeiDao.getCountByQyjlId(faHuoDanWei.getQyjlId(),qyh)==0)
+		    	count+=faHuoDanWeiDao.add(faHuoDanWei);
+		    else
+		    	count+=faHuoDanWeiDao.edit(faHuoDanWei);
 		}
 		return count;
 	}

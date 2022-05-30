@@ -16,7 +16,7 @@ public class WuZiServiceImpl implements WuZiService {
 	private WuZiMapper wuZiDao;
 
 	@Override
-	public int addToYf(List<WuZi> wzList, String qyh) {
+	public int syncToYf(List<WuZi> wzList, String qyh) {
 		// TODO Auto-generated method stub
 		int count=0;
 		for (WuZi wz : wzList) {
@@ -27,7 +27,11 @@ public class WuZiServiceImpl implements WuZiService {
 			wuZi.setWzlxId(wz.getWzlxId());
 			wuZi.setQytb(Main.YI_TONG_BU);
 			wuZi.setQyh(qyh);
-			count+=wuZiDao.add(wuZi);
+			
+		    if(wuZiDao.getCountByQyjlId(wuZi.getQyjlId(),qyh)==0)
+		    	count+=wuZiDao.add(wuZi);
+		    else
+		    	count+=wuZiDao.edit(wuZi);
 		}
 		return count;
 	}

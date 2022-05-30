@@ -234,16 +234,16 @@ public class MainController {
 		return jsonMap;
 	}
 
-	@RequestMapping(value="/addDDZTToYf")
+	@RequestMapping(value="/syncDDZTToYf")
 	@ResponseBody
-	public Map<String, Object> addDDZTToYf(String qyh, String ddztJAStr) {
+	public Map<String, Object> syncDDZTToYf(String qyh, String ddztJAStr) {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		System.out.println("ddztJAStr==="+ddztJAStr);
 		JSONArray ddJA = JSONArray.fromObject(ddztJAStr);
 		List<DingDanZhuangTai> ddztList = JSONArray.toList(ddJA, DingDanZhuangTai.class);
 		System.out.println("size==="+ddztList.size());
-		int count=dingDanZhuangTaiService.addToYf(ddztList,qyh);
+		int count=dingDanZhuangTaiService.syncToYf(ddztList,qyh);
 		if(count==ddztList.size()) {
 			jsonMap.put("status", "ok");
 		}
@@ -253,16 +253,16 @@ public class MainController {
 		return jsonMap;
 	}
 
-	@RequestMapping(value="/addDDToYf")
+	@RequestMapping(value="/syncDDToYf")
 	@ResponseBody
-	public Map<String, Object> addDDToYf(String qyh, String ddJAStr) {
+	public Map<String, Object> syncDDToYf(String qyh, String ddJAStr) {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		System.out.println("ddJAStr==="+ddJAStr);
 		JSONArray ddJA = JSONArray.fromObject(ddJAStr);
 		List<DingDan> ddList = JSONArray.toList(ddJA, DingDan.class);
 		System.out.println("size==="+ddList.size());
-		int count=dingDanService.addToYf(ddList,qyh);
+		int count=dingDanService.syncToYf(ddList,qyh);
 		if(count==ddList.size()) {
 			jsonMap.put("status", "ok");
 		}
@@ -272,16 +272,16 @@ public class MainController {
 		return jsonMap;
 	}
 
-	@RequestMapping(value="/addBDJLToYf")
+	@RequestMapping(value="/syncBDJLToYf")
 	@ResponseBody
-	public Map<String, Object> addBDJLToYf(String qyh, String bdjlJAStr) {
+	public Map<String, Object> syncBDJLToYf(String qyh, String bdjlJAStr) {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		System.out.println("bdjlJAStr==="+bdjlJAStr);
 		JSONArray bdjlJA = JSONArray.fromObject(bdjlJAStr);
 		List<BangDanJiLu> bdjlList = JSONArray.toList(bdjlJA, BangDanJiLu.class);
 		System.out.println("size==="+bdjlList.size());
-		int count=bangDanJiLuService.addToYf(bdjlList,qyh);
+		int count=bangDanJiLuService.syncToYf(bdjlList,qyh);
 		if(count==bdjlList.size()) {
 			jsonMap.put("status", "ok");
 		}
@@ -291,7 +291,7 @@ public class MainController {
 		return jsonMap;
 	}
 
-	@RequestMapping(value="/addGBJLToYf")
+	@RequestMapping(value="/syncGBJLToYf")
 	@ResponseBody
 	public Map<String, Object> addGBJLToYf(String qyh, String gbjlJAStr) {
 
@@ -300,7 +300,7 @@ public class MainController {
 		JSONArray gbjlJA = JSONArray.fromObject(gbjlJAStr);
 		List<GuoBangJiLu> gbjlList = JSONArray.toList(gbjlJA, GuoBangJiLu.class);
 		System.out.println("size==="+gbjlList.size());
-		int count=guoBangJiLuService.addToYf(gbjlList,qyh);
+		int count=guoBangJiLuService.syncToYf(gbjlList,qyh);
 		if(count==gbjlList.size()) {
 			jsonMap.put("status", "ok");
 		}
@@ -310,16 +310,16 @@ public class MainController {
 		return jsonMap;
 	}
 
-	@RequestMapping(value="/addWZLXToYf")
+	@RequestMapping(value="/syncWZLXToYf")
 	@ResponseBody
-	public Map<String, Object> addWZLXToYf(String qyh, String wzlxJAStr) {
+	public Map<String, Object> syncWZLXToYf(String qyh, String wzlxJAStr) {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		System.out.println("wzlxJAStr==="+wzlxJAStr);
 		JSONArray wzlxJA = JSONArray.fromObject(wzlxJAStr);
 		List<WuZiLeiXing> wzlxList = JSONArray.toList(wzlxJA, WuZiLeiXing.class);
 		System.out.println("size==="+wzlxList.size());
-		int count=wuZiLeiXingService.addToYf(wzlxList,qyh);
+		int count=wuZiLeiXingService.syncToYf(wzlxList,qyh);
 		if(count==wzlxList.size()) {
 			jsonMap.put("status", "ok");
 		}
@@ -329,16 +329,16 @@ public class MainController {
 		return jsonMap;
 	}
 
-	@RequestMapping(value="/addWZToYf")
+	@RequestMapping(value="/syncWZToYf")
 	@ResponseBody
-	public Map<String, Object> addWZToYf(String qyh, String wzJAStr) {
+	public Map<String, Object> syncWZToYf(String qyh, String wzJAStr) {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		System.out.println("wzJAStr==="+wzJAStr);
 		JSONArray wzJA = JSONArray.fromObject(wzJAStr);
 		List<WuZi> wzList = JSONArray.toList(wzJA, WuZi.class);
 		System.out.println("size==="+wzList.size());
-		int count=wuZiService.addToYf(wzList,qyh);
+		int count=wuZiService.syncToYf(wzList,qyh);
 		if(count==wzList.size()) {
 			jsonMap.put("status", "ok");
 		}
@@ -348,16 +348,16 @@ public class MainController {
 		return jsonMap;
 	}
 
-	@RequestMapping(value="/addYSSToYf")
+	@RequestMapping(value="/syncYSSToYf")
 	@ResponseBody
-	public Map<String, Object> addYSSToYf(String qyh, String yssJAStr) {
+	public Map<String, Object> syncYSSToYf(String qyh, String yssJAStr) {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		System.out.println("yssJAStr==="+yssJAStr);
 		JSONArray yssJA = JSONArray.fromObject(yssJAStr);
 		List<YunShuShang> yssList = JSONArray.toList(yssJA, YunShuShang.class);
 		System.out.println("size==="+yssList.size());
-		int count=yunShuShangService.addToYf(yssList,qyh);
+		int count=yunShuShangService.syncToYf(yssList,qyh);
 		if(count==yssList.size()) {
 			jsonMap.put("status", "ok");
 		}
@@ -367,16 +367,16 @@ public class MainController {
 		return jsonMap;
 	}
 
-	@RequestMapping(value="/addFHDWToYf")
+	@RequestMapping(value="/syncFHDWToYf")
 	@ResponseBody
-	public Map<String, Object> addFHDWToYf(String qyh, String fhdwJAStr) {
+	public Map<String, Object> syncFHDWToYf(String qyh, String fhdwJAStr) {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		System.out.println("fhdwJAStr==="+fhdwJAStr);
 		JSONArray fhdwJA = JSONArray.fromObject(fhdwJAStr);
 		List<FaHuoDanWei> fhdwList = JSONArray.toList(fhdwJA, FaHuoDanWei.class);
 		System.out.println("size==="+fhdwList.size());
-		int count=faHuoDanWeiService.addToYf(fhdwList,qyh);
+		int count=faHuoDanWeiService.syncToYf(fhdwList,qyh);
 		if(count==fhdwList.size()) {
 			jsonMap.put("status", "ok");
 		}
@@ -386,16 +386,16 @@ public class MainController {
 		return jsonMap;
 	}
 
-	@RequestMapping(value="/addSHBMToYf")
+	@RequestMapping(value="/syncSHBMToYf")
 	@ResponseBody
-	public Map<String, Object> addSHBMToYf(String qyh, String shbmJAStr) {
+	public Map<String, Object> syncSHBMToYf(String qyh, String shbmJAStr) {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		System.out.println("shbmJAStr==="+shbmJAStr);
 		JSONArray shbmJA = JSONArray.fromObject(shbmJAStr);
 		List<ShouHuoBuMen> shbmList = JSONArray.toList(shbmJA, ShouHuoBuMen.class);
 		System.out.println("size==="+shbmList.size());
-		int count=shouHuoBuMenService.addToYf(shbmList,qyh);
+		int count=shouHuoBuMenService.syncToYf(shbmList,qyh);
 		if(count==shbmList.size()) {
 			jsonMap.put("status", "ok");
 		}

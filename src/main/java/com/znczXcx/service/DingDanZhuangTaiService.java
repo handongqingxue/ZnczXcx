@@ -6,6 +6,6 @@ import com.znczXcx.entity.*;
 
 public interface DingDanZhuangTaiService {
 
-	int addToYf(List<DingDanZhuangTai> ddztList, String qyh);
+	int syncToYf(List<DingDanZhuangTai> ddztList, String qyh);
 
 }

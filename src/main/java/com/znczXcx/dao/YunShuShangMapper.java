@@ -9,4 +9,8 @@ public interface YunShuShangMapper {
 	int createTabByQyh(@Param("qyh") String qyh);
 
 	int add(YunShuShang yunShuShang);
+
+	int getCountByQyjlId(@Param("qyjlId") Integer qyjlId, @Param("qyh") String qyh);
+
+	int edit(YunShuShang yunShuShang);
 }

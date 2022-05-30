@@ -13,7 +13,7 @@
 		  PRIMARY KEY (`id`) USING BTREE
 		) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 	</update>
-	<insert id="add" parameterType="com.znczXcx.entity.YunShuShang">
+	<insert id="add" parameterType="com.znczXcx.entity.DingDanZhuangTai">
 		insert into `ding_dan_zhuang_tai_${qyh}`
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="qyjlId!=null">
@@ -45,4 +45,22 @@
 			</if>
 		</trim>
 	</insert>
+	<update id="edit" parameterType="com.znczXcx.entity.DingDanZhuangTai">
+		update `ding_dan_zhuang_tai_${qyh}` set
+		<trim suffixOverrides=",">
+			<if test="mc!=null">
+				mc=#{mc},
+			</if>
+			<if test="px!=null">
+				px=#{px},
+			</if>
+			<if test="qytb!=null">
+				qytb=#{qytb},
+			</if>
+		</trim>
+		where qyjlId=#{qyjlId}
+	</update>
+	<select id="getCountByQyjlId" resultType="java.lang.Integer">
+		select count(*) from `ding_dan_zhuang_tai_${qyh}` where qyjlId=#{qyjlId}
+	</select>
 </mapper>

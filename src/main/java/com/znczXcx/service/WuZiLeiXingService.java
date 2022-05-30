@@ -6,6 +6,6 @@ import com.znczXcx.entity.*;
 
 public interface WuZiLeiXingService {
 
-	int addToYf(List<WuZiLeiXing> wzlxList, String qyh);
+	int syncToYf(List<WuZiLeiXing> wzlxList, String qyh);
 
 }

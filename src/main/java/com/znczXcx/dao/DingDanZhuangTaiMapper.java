@@ -9,4 +9,8 @@ public interface DingDanZhuangTaiMapper {
 	int createTabByQyh(@Param("qyh") String qyh);
 
 	int add(DingDanZhuangTai dingDanZhuangTai);
+
+	int getCountByQyjlId(@Param("qyjlId") Integer qyjlId, @Param("qyh") String qyh);
+
+	int edit(DingDanZhuangTai dingDanZhuangTai);
 }
