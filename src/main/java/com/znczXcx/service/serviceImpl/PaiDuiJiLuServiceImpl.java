@@ -37,6 +37,15 @@ public class PaiDuiJiLuServiceImpl implements PaiDuiJiLuService {
 
 	public int add(PaiDuiJiLu pdjl) {
 		// TODO Auto-generated method stub
+		String qyh = pdjl.getQyh();
+		Integer lastDlh=paiDuiJiLuDao.getTodayLastDlh(qyh);
+		lastDlh=lastDlh==null?0:lastDlh;
+		lastDlh++;
+		Integer lastPdh=paiDuiJiLuDao.getTodayLastPdh(qyh);
+		lastPdh=lastPdh==null?0:lastPdh;
+		lastPdh++;
+		pdjl.setDlh(lastDlh);
+		pdjl.setPdh(lastPdh);
 		return paiDuiJiLuDao.add(pdjl);
 	}
 
@@ -49,5 +58,14 @@ public class PaiDuiJiLuServiceImpl implements PaiDuiJiLuService {
 		// TODO Auto-generated method stub
 		Integer lastPdh=paiDuiJiLuDao.getTodayLastPdh(qyh);
 		return paiDuiJiLuDao.updatePhdByDdId(++lastPdh,ddId,qyh);
+	}
+
+	@Override
+	public PaiDuiJiLu selectByDdId(Integer ddId, String qyh) {
+		// TODO Auto-generated method stub
+		PaiDuiJiLu pdjl=paiDuiJiLuDao.selectByDdId(ddId, qyh);
+		int qmsl=paiDuiJiLuDao.getQmslByPdh(pdjl.getPdh(),qyh);
+		pdjl.setQmsl(qmsl);
+		return pdjl;
 	}
 }

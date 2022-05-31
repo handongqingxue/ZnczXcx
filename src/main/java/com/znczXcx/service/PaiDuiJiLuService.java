@@ -20,4 +20,6 @@ public interface PaiDuiJiLuService {
 
 	int updatePhdByDdId(Integer ddId,String qyh);
 
+	PaiDuiJiLu selectByDdId(Integer ddId, String qyh);
+
 }

@@ -43,6 +43,12 @@ public class PaiDuiJiLu {
 	public void setPdh(Integer pdh) {
 		this.pdh = pdh;
 	}
+	public Integer getQmsl() {
+		return qmsl;
+	}
+	public void setQmsl(Integer qmsl) {
+		this.qmsl = qmsl;
+	}
 	public Integer getZt() {
 		return zt;
 	}
@@ -55,6 +61,18 @@ public class PaiDuiJiLu {
 	public void setQytb(Integer qytb) {
 		this.qytb = qytb;
 	}
+	public String getCph() {
+		return cph;
+	}
+	public void setCph(String cph) {
+		this.cph = cph;
+	}
+	public String getEwmlj() {
+		return ewmlj;
+	}
+	public void setEwmlj(String ewmlj) {
+		this.ewmlj = ewmlj;
+	}
 	public String getQyh() {
 		return qyh;
 	}
@@ -66,7 +84,10 @@ public class PaiDuiJiLu {
 	private String pdsj;
 	private Integer dlh;
 	private Integer pdh;
+	private Integer qmsl;
 	private Integer zt;
 	private Integer qytb;//企业同步 1.未同步 2.同步中 3.已同步
+	private String cph;
+	private String ewmlj;
 	private String qyh;
 }

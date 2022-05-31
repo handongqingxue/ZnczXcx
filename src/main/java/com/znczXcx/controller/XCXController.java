@@ -37,8 +37,10 @@ public class XCXController {
 		int count=0;
 		if(exist)
 			count=paiDuiJiLuService.updatePhdByDdId(ddId,qyh);
-		else
+		else {
+			pdjl.setQyh(qyh);
 			count=paiDuiJiLuService.add(pdjl);
+		}
 		
 		if(count>0) {
 			jsonMap.put("message", "ok");
@@ -79,11 +81,29 @@ public class XCXController {
 		if(dingDan!=null) {
 			jsonMap.put("message", "ok");
 			jsonMap.put("dingDan", dingDan);
-			jsonMap.put("zjpdzDdztMc", DingDanZhuangTai.ZHI_JIAN_PAI_DUI_ZHONG_TEXT);
+			jsonMap.put("dzjDdztMc", DingDanZhuangTai.DAI_ZHI_JIAN_TEXT);
 		}
 		else {
 			jsonMap.put("message", "no");
 			jsonMap.put("info", "没有找到相关订单！");
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/getPaiDuiXinXiByDdId")
+	@ResponseBody
+	public Map<String, Object> getPaiDuiXinXiByDdh(Integer ddId, String qyh) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		PaiDuiJiLu paiDuiJiLu=paiDuiJiLuService.selectByDdId(ddId, qyh);
+		if(paiDuiJiLu!=null) {
+			jsonMap.put("message", "ok");
+			jsonMap.put("paiDuiJiLu", paiDuiJiLu);
+		}
+		else {
+			jsonMap.put("message", "no");
+			jsonMap.put("info", "没有找到相关排队信息！");
 		}
 		return jsonMap;
 	}

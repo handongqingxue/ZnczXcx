@@ -273,7 +273,7 @@
 		select count(*) from `ding_dan_${qyh}` where qyjlId=#{qyjlId}
 	</select>
 	<select id="selectByDdh" resultType="com.znczXcx.entity.DingDan">
-		select dd.*,wzlx.mc wzlxMc,wz.mc wzMc,yss.mc yssMc,fhdw.mc fhdwMc,shbm.mc shbmMc from `ding_dan_${qyh}` dd left join `wu_zi_lei_xing_${qyh}` wzlx on dd.yfwWzlxId=wzlx.id left join `wu_zi_${qyh}` wz on dd.yfwWzId=wz.id
+		select dd.*,ddzt.mc ddztMc,wzlx.mc wzlxMc,wz.mc wzMc,yss.mc yssMc,fhdw.mc fhdwMc,shbm.mc shbmMc from `ding_dan_${qyh}` dd left join `ding_dan_zhuang_tai_${qyh}` ddzt on dd.yfwDdztId=ddzt.id left join `wu_zi_lei_xing_${qyh}` wzlx on dd.yfwWzlxId=wzlx.id left join `wu_zi_${qyh}` wz on dd.yfwWzId=wz.id
 		 left join `yun_shu_shang_${qyh}` yss on dd.yfwYssId=yss.id left join `fa_huo_dan_wei_${qyh}` fhdw on dd.yfwFhdwId=fhdw.id
 		 left join `shou_huo_bu_men_${qyh}` shbm on dd.yfwShbmId=shbm.id where dd.ddh=#{ddh}
 	</select>
