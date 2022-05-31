@@ -86,7 +86,7 @@ public class DingDanServiceImpl implements DingDanService {
 		    if(dingDanDao.getCountByQyjlId(dingDan.getQyjlId(),qyh)==0)
 		    	count+=dingDanDao.add(dingDan);
 		    else
-		    	count+=dingDanDao.edit(dingDan);
+		    	count+=dingDanDao.editByQyjlId(dingDan);
 		}
 		return count;
 	}

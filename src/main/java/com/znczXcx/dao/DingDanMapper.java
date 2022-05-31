@@ -10,7 +10,9 @@ public interface DingDanMapper {
 
 	int add(DingDan dd);
 
-	int edit(DingDan dingDan);
+	int editById(DingDan dingDan);
+
+	int editByQyjlId(DingDan dingDan);
 
 	int getCountByQyjlId(@Param("qyjlId") Integer qyjlId, @Param("qyh") String qyh);
 

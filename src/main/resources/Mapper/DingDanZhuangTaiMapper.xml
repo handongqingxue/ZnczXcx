@@ -63,4 +63,7 @@
 	<select id="getCountByQyjlId" resultType="java.lang.Integer">
 		select count(*) from `ding_dan_zhuang_tai_${qyh}` where qyjlId=#{qyjlId}
 	</select>
+	<select id="getIdByMc" resultType="java.lang.Integer">
+		select id from `ding_dan_zhuang_tai_${qyh}` where mc=#{mc}
+	</select>
 </mapper>
