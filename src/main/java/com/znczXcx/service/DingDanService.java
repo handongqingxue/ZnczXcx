@@ -10,4 +10,6 @@ public interface DingDanService {
 
 	DingDan selectByDdh(String ddh, String qyh);
 
+	DingDan getZjpdzByDdh(String ddh, String qyh);
+
 }

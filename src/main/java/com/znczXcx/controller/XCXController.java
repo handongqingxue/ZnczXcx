@@ -92,7 +92,7 @@ public class XCXController {
 
 	@RequestMapping(value="/getPaiDuiXinXiByDdId")
 	@ResponseBody
-	public Map<String, Object> getPaiDuiXinXiByDdh(Integer ddId, String qyh) {
+	public Map<String, Object> getPaiDuiXinXiByDdId(Integer ddId, String qyh) {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		
@@ -104,6 +104,24 @@ public class XCXController {
 		else {
 			jsonMap.put("message", "no");
 			jsonMap.put("info", "没有找到相关排队信息！");
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/getDzjDingDanByDdh")
+	@ResponseBody
+	public Map<String, Object> getDzjDingDanByDdh(String ddh, String qyh) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		DingDan dd=dingDanService.getZjpdzByDdh(ddh, qyh);
+		if(dd!=null) {
+			jsonMap.put("message", "ok");
+			jsonMap.put("dd", dd);
+		}
+		else {
+			jsonMap.put("message", "no");
+			jsonMap.put("info", "没有找到相关订单信息！");
 		}
 		return jsonMap;
 	}

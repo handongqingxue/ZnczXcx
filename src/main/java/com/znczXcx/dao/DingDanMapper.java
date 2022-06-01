@@ -18,4 +18,6 @@ public interface DingDanMapper {
 
 	DingDan selectByDdh(@Param("ddh") String ddh, @Param("qyh") String qyh);
 
+	DingDan selectByYfwDdztIdDdh(@Param("yfwDdztId") int yfwDdztId, @Param("ddh") String ddh, @Param("qyh") String qyh);
+
 }

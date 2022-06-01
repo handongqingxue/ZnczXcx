@@ -16,6 +16,8 @@ public class DingDanServiceImpl implements DingDanService {
 	@Autowired
 	private DingDanMapper dingDanDao;
 	@Autowired
+	private DingDanZhuangTaiMapper dingDanZhuangTaiDao;
+	@Autowired
 	private MainMapper mainDao;
 
 	public int syncToYf(List<DingDan> ddList, String qyh) {
@@ -95,6 +97,13 @@ public class DingDanServiceImpl implements DingDanService {
 	public DingDan selectByDdh(String ddh, String qyh) {
 		// TODO Auto-generated method stub
 		return dingDanDao.selectByDdh(ddh, qyh);
+	}
+
+	@Override
+	public DingDan getZjpdzByDdh(String ddh, String qyh) {
+		// TODO Auto-generated method stub
+		int yfwDdztId=dingDanZhuangTaiDao.getIdByMc(DingDanZhuangTai.ZHI_JIAN_PAI_DUI_ZHONG_TEXT,qyh);
+		return dingDanDao.selectByYfwDdztIdDdh(yfwDdztId, ddh, qyh);
 	}
 
 }
