@@ -33,6 +33,8 @@ public class MainController {
 	@Autowired
 	private MainService mainService;
 	@Autowired
+	private YongHuService yongHuService;
+	@Autowired
 	private WuZiLeiXingService wuZiLeiXingService;
 	@Autowired
 	private WuZiService wuZiService;
@@ -231,6 +233,25 @@ public class MainController {
 			jsonMap.put("status", "ok");
 		}
 		
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/syncYHToYf")
+	@ResponseBody
+	public Map<String, Object> syncYHToYf(String qyh, String yhJAStr) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		System.out.println("yhJAStr==="+yhJAStr);
+		JSONArray yhJA = JSONArray.fromObject(yhJAStr);
+		List<YongHu> yhList = JSONArray.toList(yhJA, YongHu.class);
+		System.out.println("size==="+yhList.size());
+		int count=yongHuService.syncToYf(yhList,qyh);
+		if(count==yhList.size()) {
+			jsonMap.put("status", "ok");
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
 		return jsonMap;
 	}
 

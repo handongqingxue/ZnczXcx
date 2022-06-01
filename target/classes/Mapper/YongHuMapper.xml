@@ -18,4 +18,99 @@
 		  PRIMARY KEY (`id`) USING BTREE
 		) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 	</update>
+	<select id="getCountByQyjlId" resultType="java.lang.Integer">
+		select count(*) from `yong_hu_${qyh}` where qyjlId=#{qyjlId}
+	</select>
+	<insert id="add" parameterType="com.znczXcx.entity.YongHu">
+		insert into `yong_hu_${qyh}`
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="qyjlId!=null">
+				qyjlId,
+			</if>
+			<if test="yhm!=null">
+				yhm,
+			</if>
+			<if test="mm!=null">
+				mm,
+			</if>
+			<if test="zsxm!=null">
+				zsxm,
+			</if>
+			<if test="cjsj!=null">
+				cjsj,
+			</if>
+			<if test="check!=null">
+				`check`,
+			</if>
+			<if test="js!=null">
+				js,
+			</if>
+			<if test="qxIds!=null">
+				qxIds,
+			</if>
+			<if test="qytb!=null">
+				qytb,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="qyjlId!=null">
+				#{qyjlId},
+			</if>
+			<if test="yhm!=null">
+				#{yhm},
+			</if>
+			<if test="mm!=null">
+				#{mm},
+			</if>
+			<if test="zsxm!=null">
+				#{zsxm},
+			</if>
+			<if test="cjsj!=null">
+				#{cjsj},
+			</if>
+			<if test="check!=null">
+				#{check},
+			</if>
+			<if test="js!=null">
+				#{js},
+			</if>
+			<if test="qxIds!=null">
+				#{qxIds},
+			</if>
+			<if test="qytb!=null">
+				#{qytb},
+			</if>
+		</trim>
+	</insert>
+	<update id="edit" parameterType="com.znczXcx.entity.YongHu">
+		update `yong_hu_${qyh}` set
+		<trim suffixOverrides=",">
+			<if test="yhm!=null">
+				yhm=#{yhm},
+			</if>
+			<if test="mm!=null">
+				mm=#{mm},
+			</if>
+			<if test="zsxm!=null">
+				zsxm=#{zsxm},
+			</if>
+			<if test="cjsj!=null">
+				cjsj=#{cjsj},
+			</if>
+			<if test="check!=null">
+				`check`=#{check},
+			</if>
+			<if test="js!=null">
+				js=#{js},
+			</if>
+			<if test="qxIds!=null">
+				qxIds=#{qxIds},
+			</if>
+			<if test="qytb!=null">
+				qytb=#{qytb},
+			</if>
+		</trim>
+		where qyjlId=#{qyjlId}
+	</update>
 </mapper>

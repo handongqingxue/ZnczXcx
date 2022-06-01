@@ -14,10 +14,37 @@ public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 
 	@Autowired
 	private ZhiJianJiLuMapper zhiJianJiLuDao;
+	@Autowired
+	private DingDanZhuangTaiMapper dingDanZhuangTaiDao;
+	@Autowired
+	private DingDanMapper dingDanDao;
+	@Autowired
+	private MainMapper mainDao;
 
 	public int add(ZhiJianJiLu zjjl) {
 		// TODO Auto-generated method stub
-		return zhiJianJiLuDao.add(zjjl);
+		int count=zhiJianJiLuDao.add(zjjl);
+		if(count>0) {
+			DingDan dd=new DingDan();
+			dd.setId(zjjl.getDdId());
+			int yfwDdztId = 0;
+			if(zjjl.getJg()==ZhiJianJiLu.HE_GE) {
+				yfwDdztId = dingDanZhuangTaiDao.getIdByMc(DingDanZhuangTai.YI_JIAN_PAI_DUI_ZHONG_TEXT, zjjl.getQyh());
+			}
+			else if(zjjl.getJg()==ZhiJianJiLu.BU_HE_GE) {
+				yfwDdztId = dingDanZhuangTaiDao.getIdByMc(DingDanZhuangTai.DAI_ZHI_JIAN_TEXT, zjjl.getQyh());
+			}
+			dd.setYfwDdztId(yfwDdztId);
+			
+			//获取企业订单状态id
+			Object qyDdztIdObj = mainDao.getYfwColValByQyColVal("qyjlId", dd.getYfwDdztId()+"", "id", "ding_dan_zhuang_tai", "yuejiazhuang");
+			if(qyDdztIdObj!=null) {
+				Integer qyDdztId=Integer.valueOf(qyDdztIdObj.toString());
+				dd.setQyDdztId(qyDdztId);
+			}
+			dingDanDao.editById(dd);
+		}
+		return count;
 	}
 
 	public boolean checkIfTbZt(String qyh, Integer qytb) {
