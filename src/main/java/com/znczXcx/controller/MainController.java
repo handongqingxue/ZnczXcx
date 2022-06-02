@@ -469,7 +469,7 @@ public class MainController {
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		
 		if(Main.YONG_HU.equals(tab)) {
-			int count=yongHuService.updateTbZtByQytb(Main.WEI_TONG_BU,Main.TONG_BU_ZHONG,qyh);
+			int count=yongHuService.updateTbZtByQytb(qytb,xtbzt,qyh);
 			if(count==0)
 				jsonMap.put("status", "no");
 			else {
