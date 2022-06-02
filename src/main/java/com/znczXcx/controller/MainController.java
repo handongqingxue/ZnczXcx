@@ -434,6 +434,9 @@ public class MainController {
 		if(Main.YONG_HU.equals(tab)) {
 			bool=yongHuService.checkIfWtbToYf(qyh);
 		}
+		else if(Main.DING_DAN_ZHUANG_TAI.equals(tab)) {
+			bool=dingDanZhuangTaiService.checkIfWtbToYf(qyh);
+		}
 		
 		if(bool) {
 			jsonMap.put("status", "ok");
@@ -459,6 +462,15 @@ public class MainController {
 				jsonMap.put("yhList", yhList);
 			}
 		}
+		else if(Main.DING_DAN_ZHUANG_TAI.equals(tab)) {
+			List<DingDanZhuangTai> ddztList=dingDanZhuangTaiService.selectListByQytb(qytb, qyh);
+			if(ddztList.size()==0)
+				jsonMap.put("status", "no");
+			else {
+				jsonMap.put("status", "ok");
+				jsonMap.put("ddztList", ddztList);
+			}
+		}
 		return jsonMap;
 	}
 
@@ -468,14 +480,24 @@ public class MainController {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		
+		String status=null;
 		if(Main.YONG_HU.equals(tab)) {
 			int count=yongHuService.updateTbZtByQytb(qytb,xtbzt,qyh);
 			if(count==0)
-				jsonMap.put("status", "no");
+				status="no";
 			else {
-				jsonMap.put("status", "ok");
+				status="ok";
 			}
 		}
+		else if(Main.DING_DAN_ZHUANG_TAI.equals(tab)) {
+			int count=dingDanZhuangTaiService.updateTbZtByQytb(qytb,xtbzt,qyh);
+			if(count==0)
+				status="no";
+			else {
+				status="ok";
+			}
+		}
+		jsonMap.put("status", status);
 		return jsonMap;
 	}
 	

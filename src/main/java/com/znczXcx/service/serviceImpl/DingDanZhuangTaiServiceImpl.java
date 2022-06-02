@@ -34,4 +34,23 @@ public class DingDanZhuangTaiServiceImpl implements DingDanZhuangTaiService {
 		}
 		return count;
 	}
+
+	@Override
+	public boolean checkIfWtbToYf(String qyh) {
+		// TODO Auto-generated method stub
+		int count=dingDanZhuangTaiDao.getWtbToYfCount(qyh);
+		return count>0?true:false;
+	}
+
+	@Override
+	public List<DingDanZhuangTai> selectListByQytb(Integer qytb, String qyh) {
+		// TODO Auto-generated method stub
+		return dingDanZhuangTaiDao.selectListByQytb(qytb, qyh);
+	}
+
+	@Override
+	public int updateTbZtByQytb(int qytb, int xtbzt, String qyh) {
+		// TODO Auto-generated method stub
+		return dingDanZhuangTaiDao.updateTbZtByQytb(qytb, xtbzt, qyh);
+	}
 }
