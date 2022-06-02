@@ -1,7 +1,6 @@
 package com.znczXcx.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -422,6 +421,60 @@ public class MainController {
 		}
 		else {
 			jsonMap.put("status", "no");
+		}
+		return jsonMap;
+	}
+	
+	@RequestMapping(value="/checkIfWtbToQy")
+	@ResponseBody
+	public Map<String, Object> checkIfWtbToQy(String tab, String qyh) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		boolean bool=false;
+		if(Main.YONG_HU.equals(tab)) {
+			bool=yongHuService.checkIfWtbToYf(qyh);
+		}
+		
+		if(bool) {
+			jsonMap.put("status", "ok");
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/selectListByQytb")
+	@ResponseBody
+	public Map<String, Object> selectListByQytb(String tab, Integer qytb, String qyh) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		if(Main.YONG_HU.equals(tab)) {
+			List<YongHu> yhList=yongHuService.selectListByQytb(qytb, qyh);
+			if(yhList.size()==0)
+				jsonMap.put("status", "no");
+			else {
+				jsonMap.put("status", "ok");
+				jsonMap.put("yhList", yhList);
+			}
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/updateTbZtByQytb")
+	@ResponseBody
+	public Map<String, Object> updateTbZtByQytb(String tab, Integer qytb, Integer xtbzt, String qyh) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		if(Main.YONG_HU.equals(tab)) {
+			int count=yongHuService.updateTbZtByQytb(Main.WEI_TONG_BU,Main.TONG_BU_ZHONG,qyh);
+			if(count==0)
+				jsonMap.put("status", "no");
+			else {
+				jsonMap.put("status", "ok");
+			}
 		}
 		return jsonMap;
 	}

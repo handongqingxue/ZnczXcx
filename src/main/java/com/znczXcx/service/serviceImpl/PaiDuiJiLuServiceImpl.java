@@ -67,6 +67,7 @@ public class PaiDuiJiLuServiceImpl implements PaiDuiJiLuService {
 	public int updatePhdByDdId(Integer ddId,String qyh) {
 		// TODO Auto-generated method stub
 		Integer lastPdh=paiDuiJiLuDao.getTodayLastPdh(qyh);
+		lastPdh=lastPdh==null?0:lastPdh;
 		int count=paiDuiJiLuDao.updatePhdByDdId(++lastPdh,ddId,qyh);
 		if(count>0) {
 			updateDDZTById(ddId,qyh);

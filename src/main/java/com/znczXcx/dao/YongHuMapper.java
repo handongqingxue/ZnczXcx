@@ -16,4 +16,10 @@ public interface YongHuMapper {
 
 	int edit(YongHu yongHu);
 
+	int getWtbToYfCount(@Param("qyh") String qyh);
+
+	List<YongHu> selectListByQytb(@Param("qytb") Integer qytb, @Param("qyh") String qyh);
+
+	int updateTbZtByQytb(@Param("qytb") int qytb, @Param("xtbzt") int xtbzt, @Param("qyh") String qyh);
+
 }

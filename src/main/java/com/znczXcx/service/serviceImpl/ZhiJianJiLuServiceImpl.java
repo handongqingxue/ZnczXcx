@@ -42,6 +42,7 @@ public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 				Integer qyDdztId=Integer.valueOf(qyDdztIdObj.toString());
 				dd.setQyDdztId(qyDdztId);
 			}
+			dd.setQyh(zjjl.getQyh());
 			dingDanDao.editById(dd);
 		}
 		return count;

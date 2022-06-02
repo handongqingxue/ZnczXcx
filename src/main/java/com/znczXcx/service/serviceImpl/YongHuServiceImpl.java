@@ -39,4 +39,23 @@ public class YongHuServiceImpl implements YongHuService {
 		}
 		return count;
 	}
+
+	@Override
+	public boolean checkIfWtbToYf(String qyh) {
+		// TODO Auto-generated method stub
+		int count=yongHuDao.getWtbToYfCount(qyh);
+		return count>0?true:false;
+	}
+
+	@Override
+	public List<YongHu> selectListByQytb(Integer qytb, String qyh) {
+		// TODO Auto-generated method stub
+		return yongHuDao.selectListByQytb(qytb, qyh);
+	}
+
+	@Override
+	public int updateTbZtByQytb(int qytb, int xtbzt, String qyh) {
+		// TODO Auto-generated method stub
+		return yongHuDao.updateTbZtByQytb(qytb, xtbzt, qyh);
+	}
 }
