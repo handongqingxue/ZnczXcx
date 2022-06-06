@@ -106,4 +106,23 @@ public class DingDanServiceImpl implements DingDanService {
 		return dingDanDao.selectByYfwDdztIdDdh(yfwDdztId, ddh, qyh);
 	}
 
+	@Override
+	public boolean checkIfWtbToYf(String qyh) {
+		// TODO Auto-generated method stub
+		int count=dingDanDao.getWtbToYfCount(qyh);
+		return count>0?true:false;
+	}
+
+	@Override
+	public List<DingDan> selectListByQytb(Integer qytb, String qyh) {
+		// TODO Auto-generated method stub
+		return dingDanDao.selectListByQytb(qytb, qyh);
+	}
+
+	@Override
+	public int updateTbZtByQytb(Integer qytb, Integer xtbzt, String qyh) {
+		// TODO Auto-generated method stub
+		return dingDanDao.updateTbZtByQytb(qytb, xtbzt, qyh);
+	}
+
 }

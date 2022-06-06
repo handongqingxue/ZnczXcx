@@ -363,4 +363,13 @@
 		 left join `yun_shu_shang_${qyh}` yss on dd.yfwYssId=yss.id left join `fa_huo_dan_wei_${qyh}` fhdw on dd.yfwFhdwId=fhdw.id
 		 left join `shou_huo_bu_men_${qyh}` shbm on dd.yfwShbmId=shbm.id where dd.yfwDdztId=#{yfwDdztId} and dd.ddh=#{ddh}
 	</select>
+	<select id="getWtbToYfCount" resultType="java.lang.Integer">
+		select count(*) from `ding_dan_${qyh}` where qytb=${@com.znczXcx.entity.Main@WEI_TONG_BU}
+	</select>
+	<select id="selectListByQytb" resultType="com.znczXcx.entity.DingDan">
+		select * from `ding_dan_${qyh}` where qytb=#{qytb}
+	</select>
+	<update id="updateTbZtByQytb">
+		update `ding_dan_${qyh}` set qytb=#{xtbzt} where qytb=#{qytb}
+	</update>
 </mapper>

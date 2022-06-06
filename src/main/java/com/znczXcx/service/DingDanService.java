@@ -12,4 +12,10 @@ public interface DingDanService {
 
 	DingDan getZjpdzByDdh(String ddh, String qyh);
 
+	boolean checkIfWtbToYf(String qyh);
+
+	List<DingDan> selectListByQytb(Integer qytb, String qyh);
+
+	int updateTbZtByQytb(Integer qytb, Integer xtbzt, String qyh);
+
 }

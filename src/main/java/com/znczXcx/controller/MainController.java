@@ -452,6 +452,9 @@ public class MainController {
 		else if(Main.SHOU_HUO_BU_MEN.equals(tab)) {
 			bool=shouHuoBuMenService.checkIfWtbToYf(qyh);
 		}
+		else if(Main.DING_DAN.equals(tab)) {
+			bool=dingDanService.checkIfWtbToYf(qyh);
+		}
 		
 		if(bool) {
 			jsonMap.put("status", "ok");
@@ -531,6 +534,15 @@ public class MainController {
 				jsonMap.put("shbmList", shbmList);
 			}
 		}
+		else if(Main.DING_DAN.equals(tab)) {
+			List<DingDan> ddList=dingDanService.selectListByQytb(qytb, qyh);
+			if(ddList.size()==0)
+				jsonMap.put("status", "no");
+			else {
+				jsonMap.put("status", "ok");
+				jsonMap.put("ddList", ddList);
+			}
+		}
 		return jsonMap;
 	}
 
@@ -591,6 +603,14 @@ public class MainController {
 		}
 		else if(Main.SHOU_HUO_BU_MEN.equals(tab)) {
 			int count=shouHuoBuMenService.updateTbZtByQytb(qytb,xtbzt,qyh);
+			if(count==0)
+				status="no";
+			else {
+				status="ok";
+			}
+		}
+		else if(Main.DING_DAN.equals(tab)) {
+			int count=dingDanService.updateTbZtByQytb(qytb,xtbzt,qyh);
 			if(count==0)
 				status="no";
 			else {
