@@ -437,6 +437,9 @@ public class MainController {
 		else if(Main.DING_DAN_ZHUANG_TAI.equals(tab)) {
 			bool=dingDanZhuangTaiService.checkIfWtbToYf(qyh);
 		}
+		else if(Main.WU_ZI_LEI_XING.equals(tab)) {
+			bool=wuZiLeiXingService.checkIfWtbToYf(qyh);
+		}
 		
 		if(bool) {
 			jsonMap.put("status", "ok");
@@ -471,6 +474,15 @@ public class MainController {
 				jsonMap.put("ddztList", ddztList);
 			}
 		}
+		else if(Main.WU_ZI_LEI_XING.equals(tab)) {
+			List<WuZiLeiXing> wzlxList=wuZiLeiXingService.selectListByQytb(qytb, qyh);
+			if(wzlxList.size()==0)
+				jsonMap.put("status", "no");
+			else {
+				jsonMap.put("status", "ok");
+				jsonMap.put("wzlxList", wzlxList);
+			}
+		}
 		return jsonMap;
 	}
 
@@ -491,6 +503,14 @@ public class MainController {
 		}
 		else if(Main.DING_DAN_ZHUANG_TAI.equals(tab)) {
 			int count=dingDanZhuangTaiService.updateTbZtByQytb(qytb,xtbzt,qyh);
+			if(count==0)
+				status="no";
+			else {
+				status="ok";
+			}
+		}
+		else if(Main.WU_ZI_LEI_XING.equals(tab)) {
+			int count=wuZiLeiXingService.updateTbZtByQytb(qytb,xtbzt,qyh);
 			if(count==0)
 				status="no";
 			else {
