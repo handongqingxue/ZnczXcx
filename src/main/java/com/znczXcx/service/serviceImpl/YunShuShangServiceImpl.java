@@ -34,4 +34,23 @@ public class YunShuShangServiceImpl implements YunShuShangService {
 		}
 		return count;
 	}
+
+	@Override
+	public boolean checkIfWtbToYf(String qyh) {
+		// TODO Auto-generated method stub
+		int count=yunShuShangDao.getWtbToYfCount(qyh);
+		return count>0?true:false;
+	}
+
+	@Override
+	public List<YunShuShang> selectListByQytb(Integer qytb, String qyh) {
+		// TODO Auto-generated method stub
+		return yunShuShangDao.selectListByQytb(qytb, qyh);
+	}
+
+	@Override
+	public int updateTbZtByQytb(int qytb, int xtbzt, String qyh) {
+		// TODO Auto-generated method stub
+		return yunShuShangDao.updateTbZtByQytb(qytb, xtbzt, qyh);
+	}
 }
