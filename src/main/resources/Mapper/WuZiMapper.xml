@@ -70,4 +70,13 @@
 	<select id="getCountByQyjlId" resultType="java.lang.Integer">
 		select count(*) from `wu_zi_${qyh}` where qyjlId=#{qyjlId}
 	</select>
+	<select id="getWtbToYfCount" resultType="java.lang.Integer">
+		select count(*) from `wu_zi_${qyh}` where qytb=${@com.znczXcx.entity.Main@WEI_TONG_BU}
+	</select>
+	<select id="selectListByQytb" resultType="com.znczXcx.entity.WuZi">
+		select * from `wu_zi_${qyh}` where qytb=#{qytb}
+	</select>
+	<update id="updateTbZtByQytb">
+		update `wu_zi_${qyh}` set qytb=#{xtbzt} where qytb=#{qytb}
+	</update>
 </mapper>
