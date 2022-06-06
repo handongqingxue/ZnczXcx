@@ -34,4 +34,23 @@ public class FaHuoDanWeiServiceImpl implements FaHuoDanWeiService {
 		}
 		return count;
 	}
+
+	@Override
+	public boolean checkIfWtbToYf(String qyh) {
+		// TODO Auto-generated method stub
+		int count=faHuoDanWeiDao.getWtbToYfCount(qyh);
+		return count>0?true:false;
+	}
+
+	@Override
+	public List<FaHuoDanWei> selectListByQytb(Integer qytb, String qyh) {
+		// TODO Auto-generated method stub
+		return faHuoDanWeiDao.selectListByQytb(qytb, qyh);
+	}
+
+	@Override
+	public int updateTbZtByQytb(int qytb, int xtbzt, String qyh) {
+		// TODO Auto-generated method stub
+		return faHuoDanWeiDao.updateTbZtByQytb(qytb, xtbzt, qyh);
+	}
 }
