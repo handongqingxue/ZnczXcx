@@ -34,4 +34,23 @@ public class ShouHuoBuMenServiceImpl implements ShouHuoBuMenService {
 		}
 		return count;
 	}
+
+	@Override
+	public boolean checkIfWtbToYf(String qyh) {
+		// TODO Auto-generated method stub
+		int count=shouHuoBuMenDao.getWtbToYfCount(qyh);
+		return count>0?true:false;
+	}
+
+	@Override
+	public List<ShouHuoBuMen> selectListByQytb(Integer qytb, String qyh) {
+		// TODO Auto-generated method stub
+		return shouHuoBuMenDao.selectListByQytb(qytb, qyh);
+	}
+
+	@Override
+	public int updateTbZtByQytb(Integer qytb, Integer xtbzt, String qyh) {
+		// TODO Auto-generated method stub
+		return shouHuoBuMenDao.updateTbZtByQytb(qytb, xtbzt, qyh);
+	}
 }
