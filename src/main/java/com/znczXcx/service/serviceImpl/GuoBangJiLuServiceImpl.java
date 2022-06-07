@@ -33,4 +33,23 @@ public class GuoBangJiLuServiceImpl implements GuoBangJiLuService {
 		}
 		return count;
 	}
+
+	@Override
+	public boolean checkIfWtbToYf(String qyh) {
+		// TODO Auto-generated method stub
+		int count=guoBangJiLuDao.getWtbToYfCount(qyh);
+		return count>0?true:false;
+	}
+
+	@Override
+	public List<GuoBangJiLu> selectListByQytb(Integer qytb, String qyh) {
+		// TODO Auto-generated method stub
+		return guoBangJiLuDao.selectListByQytb(qytb, qyh);
+	}
+
+	@Override
+	public int updateTbZtByQytb(Integer qytb, Integer xtbzt, String qyh) {
+		// TODO Auto-generated method stub
+		return guoBangJiLuDao.updateTbZtByQytb(qytb, xtbzt, qyh);
+	}
 }

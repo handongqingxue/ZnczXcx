@@ -464,6 +464,9 @@ public class MainController {
 		else if(Main.ZHI_JIAN_JI_LU.equals(tab)) {
 			bool=zhiJianJiLuService.checkIfWtbToYf(qyh);
 		}
+		else if(Main.GUO_BANG_JI_LU.equals(tab)) {
+			bool=guoBangJiLuService.checkIfWtbToYf(qyh);
+		}
 		
 		if(bool) {
 			jsonMap.put("status", "ok");
@@ -579,6 +582,15 @@ public class MainController {
 				jsonMap.put("zjjlList", zjjlList);
 			}
 		}
+		else if(Main.GUO_BANG_JI_LU.equals(tab)) {
+			List<GuoBangJiLu> gbjlList=guoBangJiLuService.selectListByQytb(qytb, qyh);
+			if(gbjlList.size()==0)
+				jsonMap.put("status", "no");
+			else {
+				jsonMap.put("status", "ok");
+				jsonMap.put("gbjlList", gbjlList);
+			}
+		}
 		return jsonMap;
 	}
 
@@ -671,6 +683,14 @@ public class MainController {
 		}
 		else if(Main.ZHI_JIAN_JI_LU.equals(tab)) {
 			int count=zhiJianJiLuService.updateTbZtByQytb(qytb,xtbzt,qyh);
+			if(count==0)
+				status="no";
+			else {
+				status="ok";
+			}
+		}
+		else if(Main.GUO_BANG_JI_LU.equals(tab)) {
+			int count=guoBangJiLuService.updateTbZtByQytb(qytb,xtbzt,qyh);
 			if(count==0)
 				status="no";
 			else {
