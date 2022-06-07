@@ -20,4 +20,8 @@ public interface ZhiJianJiLuMapper {
 
 	int createTabByQyh(@Param("qyh") String qyh);
 
+	int getWtbToYfCount(@Param("qyh") String qyh);
+
+	List<ZhiJianJiLu> selectListByQytb(@Param("qytb") Integer qytb, @Param("qyh") String qyh);
+
 }

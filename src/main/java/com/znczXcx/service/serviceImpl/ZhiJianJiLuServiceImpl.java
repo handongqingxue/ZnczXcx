@@ -67,4 +67,23 @@ public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 		// TODO Auto-generated method stub
 		return zhiJianJiLuDao.updateToYtb(qyh);
 	}
+
+	@Override
+	public boolean checkIfWtbToYf(String qyh) {
+		// TODO Auto-generated method stub
+		int count=zhiJianJiLuDao.getWtbToYfCount(qyh);
+		return count>0?true:false;
+	}
+
+	@Override
+	public List<ZhiJianJiLu> selectListByQytb(Integer qytb, String qyh) {
+		// TODO Auto-generated method stub
+		return zhiJianJiLuDao.selectListByQytb(qytb, qyh);
+	}
+
+	@Override
+	public int updateTbZtByQytb(Integer qytb, Integer xtbzt, String qyh) {
+		// TODO Auto-generated method stub
+		return zhiJianJiLuDao.updateTbZtByQytb(qyh, qytb, xtbzt);
+	}
 }

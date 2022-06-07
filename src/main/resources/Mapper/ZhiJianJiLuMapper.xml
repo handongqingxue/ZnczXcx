@@ -64,4 +64,7 @@
 	<update id="updateToYtb">
 		update zhi_jian_ji_lu_${qyh} set qytb=${@com.znczXcx.entity.Main@YI_TONG_BU} where qytb=${@com.znczXcx.entity.Main@TONG_BU_ZHONG}
 	</update>
+	<select id="getWtbToYfCount" resultType="java.lang.Integer">
+		select count(*) from `zhi_jian_ji_lu_${qyh}` where qytb=${@com.znczXcx.entity.Main@WEI_TONG_BU}
+	</select>
 </mapper>
