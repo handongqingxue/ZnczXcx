@@ -99,4 +99,23 @@ public class PaiDuiJiLuServiceImpl implements PaiDuiJiLuService {
 		pdjl.setQmsl(qmsl);
 		return pdjl;
 	}
+
+	@Override
+	public boolean checkIfWtbToYf(String qyh) {
+		// TODO Auto-generated method stub
+		int count=paiDuiJiLuDao.getWtbToYfCount(qyh);
+		return count>0?true:false;
+	}
+
+	@Override
+	public List<PaiDuiJiLu> selectListByQytb(Integer qytb, String qyh) {
+		// TODO Auto-generated method stub
+		return paiDuiJiLuDao.selectListByQytb(qytb, qyh);
+	}
+
+	@Override
+	public int updateTbZtByQytb(Integer qytb, Integer xtbzt, String qyh) {
+		// TODO Auto-generated method stub
+		return paiDuiJiLuDao.updateTbZtByQytb(qytb, xtbzt, qyh);
+	}
 }

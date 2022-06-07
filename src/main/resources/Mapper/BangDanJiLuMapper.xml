@@ -88,4 +88,13 @@
 		</trim>
 		where qyjlId=#{qyjlId}
 	</update>
+	<select id="getWtbToYfCount" resultType="java.lang.Integer">
+		select count(*) from `bang_dan_ji_lu_${qyh}` where qytb=${@com.znczXcx.entity.Main@WEI_TONG_BU}
+	</select>
+	<select id="selectListByQytb" resultType="com.znczXcx.entity.BangDanJiLu">
+		select * from `bang_dan_ji_lu_${qyh}` where qytb=#{qytb}
+	</select>
+	<update id="updateTbZtByQytb">
+		update `bang_dan_ji_lu_${qyh}` set qytb=#{xtbzt} where qytb=#{qytb}
+	</update>
 </mapper>

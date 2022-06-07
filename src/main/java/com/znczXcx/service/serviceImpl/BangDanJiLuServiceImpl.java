@@ -38,4 +38,23 @@ public class BangDanJiLuServiceImpl implements BangDanJiLuService {
 		return count;
 	}
 
+	@Override
+	public boolean checkIfWtbToYf(String qyh) {
+		// TODO Auto-generated method stub
+		int count=bangDanJiLuDao.getWtbToYfCount(qyh);
+		return count>0?true:false;
+	}
+
+	@Override
+	public List<BangDanJiLu> selectListByQytb(Integer qytb, String qyh) {
+		// TODO Auto-generated method stub
+		return bangDanJiLuDao.selectListByQytb(qytb, qyh);
+	}
+
+	@Override
+	public int updateTbZtByQytb(Integer qytb, Integer xtbzt, String qyh) {
+		// TODO Auto-generated method stub
+		return bangDanJiLuDao.updateTbZtByQytb(qytb, xtbzt, qyh);
+	}
+
 }

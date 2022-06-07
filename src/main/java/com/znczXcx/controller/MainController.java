@@ -455,6 +455,12 @@ public class MainController {
 		else if(Main.DING_DAN.equals(tab)) {
 			bool=dingDanService.checkIfWtbToYf(qyh);
 		}
+		else if(Main.PAI_DUI_JI_LU.equals(tab)) {
+			bool=paiDuiJiLuService.checkIfWtbToYf(qyh);
+		}
+		else if(Main.BANG_DAN_JI_LU.equals(tab)) {
+			bool=bangDanJiLuService.checkIfWtbToYf(qyh);
+		}
 		
 		if(bool) {
 			jsonMap.put("status", "ok");
@@ -543,6 +549,24 @@ public class MainController {
 				jsonMap.put("ddList", ddList);
 			}
 		}
+		else if(Main.PAI_DUI_JI_LU.equals(tab)) {
+			List<PaiDuiJiLu> pdjlList=paiDuiJiLuService.selectListByQytb(qytb, qyh);
+			if(pdjlList.size()==0)
+				jsonMap.put("status", "no");
+			else {
+				jsonMap.put("status", "ok");
+				jsonMap.put("pdjlList", pdjlList);
+			}
+		}
+		else if(Main.BANG_DAN_JI_LU.equals(tab)) {
+			List<BangDanJiLu> bdjlList=bangDanJiLuService.selectListByQytb(qytb, qyh);
+			if(bdjlList.size()==0)
+				jsonMap.put("status", "no");
+			else {
+				jsonMap.put("status", "ok");
+				jsonMap.put("bdjlList", bdjlList);
+			}
+		}
 		return jsonMap;
 	}
 
@@ -611,6 +635,22 @@ public class MainController {
 		}
 		else if(Main.DING_DAN.equals(tab)) {
 			int count=dingDanService.updateTbZtByQytb(qytb,xtbzt,qyh);
+			if(count==0)
+				status="no";
+			else {
+				status="ok";
+			}
+		}
+		else if(Main.PAI_DUI_JI_LU.equals(tab)) {
+			int count=paiDuiJiLuService.updateTbZtByQytb(qytb,xtbzt,qyh);
+			if(count==0)
+				status="no";
+			else {
+				status="ok";
+			}
+		}
+		else if(Main.BANG_DAN_JI_LU.equals(tab)) {
+			int count=bangDanJiLuService.updateTbZtByQytb(qytb,xtbzt,qyh);
 			if(count==0)
 				status="no";
 			else {

@@ -32,4 +32,10 @@ public interface PaiDuiJiLuMapper {
 
 	int getQmslByPdh(@Param("pdh") Integer pdh, @Param("qyh") String qyh);
 
+	int getWtbToYfCount(@Param("qyh") String qyh);
+
+	List<PaiDuiJiLu> selectListByQytb(@Param("qytb") Integer qytb, @Param("qyh") String qyh);
+
+	int updateTbZtByQytb(@Param("qytb") Integer qytb, @Param("xtbzt") Integer xtbzt, @Param("qyh") String qyh);
+
 }

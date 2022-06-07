@@ -19,6 +19,9 @@
 	<select id="getTbZtCount" resultType="java.lang.Integer">
 		select count(*) from pai_dui_ji_lu_${qyh} where qytb=#{qytb}
 	</select>
+	<select id="getWtbToYfCount" resultType="java.lang.Integer">
+		select count(*) from `pai_dui_ji_lu_${qyh}` where qytb=${@com.znczXcx.entity.Main@WEI_TONG_BU}
+	</select>
 	<select id="selectListByQytb" resultType="com.znczXcx.entity.PaiDuiJiLu">
 		select * from pai_dui_ji_lu_${qyh} where qytb=#{qytb}
 	</select>

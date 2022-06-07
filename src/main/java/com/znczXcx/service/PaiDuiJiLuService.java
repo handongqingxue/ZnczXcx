@@ -22,4 +22,10 @@ public interface PaiDuiJiLuService {
 
 	PaiDuiJiLu selectByDdId(Integer ddId, String qyh);
 
+	boolean checkIfWtbToYf(String qyh);
+
+	List<PaiDuiJiLu> selectListByQytb(Integer qytb, String qyh);
+
+	int updateTbZtByQytb(Integer qytb, Integer xtbzt, String qyh);
+
 }
