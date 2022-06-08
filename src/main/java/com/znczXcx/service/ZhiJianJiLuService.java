@@ -14,12 +14,12 @@ public interface ZhiJianJiLuService {
 
 	int updateTbZtByQytb(String qyh, int qytb, int xtbzt);
 
-	int updateToYtb(String qyh);
-
 	boolean checkIfWtbToYf(String qyh);
 
 	List<ZhiJianJiLu> selectListByQytb(Integer qytb, String qyh);
 
 	int updateTbZtByQytb(Integer qytb, Integer xtbzt, String qyh);
+
+	int syncToYf(List<ZhiJianJiLu> zjjlList, String qyh);
 
 }

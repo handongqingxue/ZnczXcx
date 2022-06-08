@@ -10,18 +10,20 @@ public interface ZhiJianJiLuMapper {
 
 	int add(ZhiJianJiLu zjjl);
 
+	int edit(ZhiJianJiLu zhiJianJiLu);
+
 	int getTbZtCount(@Param("qyh") String qyh, @Param("qytb") Integer qytb);
 
 	List<ZhiJianJiLu> selectListByQytb(@Param("qyh") String qyh, @Param("qytb") Integer qytb);
 
 	int updateTbZtByQytb(@Param("qyh") String qyh, @Param("qytb") int qytb, @Param("xtbzt") int xtbzt);
 
-	int updateToYtb(@Param("qyh") String qyh);
-
 	int createTabByQyh(@Param("qyh") String qyh);
 
 	int getWtbToYfCount(@Param("qyh") String qyh);
 
 	List<ZhiJianJiLu> selectListByQytb(@Param("qytb") Integer qytb, @Param("qyh") String qyh);
+
+	int getCountByQyjlId(@Param("qyjlId") Integer qyjlId, @Param("qyh") String qyh);
 
 }

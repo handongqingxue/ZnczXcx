@@ -201,23 +201,6 @@ public class MainController {
 		return jsonMap;
 	}
 
-	@RequestMapping(value="/updateZJJLToYtb")
-	@ResponseBody
-	public Map<String, Object> updateZJJLToYtb(String qyh) {
-
-		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		
-		int count=zhiJianJiLuService.updateToYtb(qyh);
-		if(count==0) {
-			jsonMap.put("status", "no");
-		}
-		else {
-			jsonMap.put("status", "ok");
-		}
-		
-		return jsonMap;
-	}
-
 	@RequestMapping(value="/syncYHToYf")
 	@ResponseBody
 	public Map<String, Object> syncYHToYf(String qyh, String yhJAStr) {
@@ -419,6 +402,25 @@ public class MainController {
 		System.out.println("size==="+pdjlList.size());
 		int count=paiDuiJiLuService.syncToYf(pdjlList,qyh);
 		if(count==pdjlList.size()) {
+			jsonMap.put("status", "ok");
+		}
+		else {
+			jsonMap.put("status", "no");
+		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/syncZJJLToYf")
+	@ResponseBody
+	public Map<String, Object> syncZJJLToYf(String qyh, String zjjlJAStr) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		System.out.println("zjjlJAStr==="+zjjlJAStr);
+		JSONArray zjjlJA = JSONArray.fromObject(zjjlJAStr);
+		List<ZhiJianJiLu> zjjlList = JSONArray.toList(zjjlJA, ZhiJianJiLu.class);
+		System.out.println("size==="+zjjlList.size());
+		int count=zhiJianJiLuService.syncToYf(zjjlList,qyh);
+		if(count==zjjlList.size()) {
 			jsonMap.put("status", "ok");
 		}
 		else {

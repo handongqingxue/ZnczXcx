@@ -63,11 +63,6 @@ public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 		return zhiJianJiLuDao.updateTbZtByQytb(qyh, qytb, xtbzt);
 	}
 
-	public int updateToYtb(String qyh) {
-		// TODO Auto-generated method stub
-		return zhiJianJiLuDao.updateToYtb(qyh);
-	}
-
 	@Override
 	public boolean checkIfWtbToYf(String qyh) {
 		// TODO Auto-generated method stub
@@ -85,5 +80,23 @@ public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 	public int updateTbZtByQytb(Integer qytb, Integer xtbzt, String qyh) {
 		// TODO Auto-generated method stub
 		return zhiJianJiLuDao.updateTbZtByQytb(qyh, qytb, xtbzt);
+	}
+
+	@Override
+	public int syncToYf(List<ZhiJianJiLu> zjjlList, String qyh) {
+		// TODO Auto-generated method stub
+		int count=0;
+		for (ZhiJianJiLu zjjl : zjjlList) {
+			ZhiJianJiLu zhiJianJiLu=zjjl;
+			zhiJianJiLu.setQyjlId(zjjl.getId());
+			zhiJianJiLu.setQytb(Main.YI_TONG_BU);
+			zhiJianJiLu.setQyh(qyh);
+			
+		    if(zhiJianJiLuDao.getCountByQyjlId(zhiJianJiLu.getQyjlId(),qyh)==0)
+		    	count+=zhiJianJiLuDao.add(zhiJianJiLu);
+		    else
+		    	count+=zhiJianJiLuDao.edit(zhiJianJiLu);
+		}
+		return count;
 	}
 }

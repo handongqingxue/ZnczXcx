@@ -52,6 +52,27 @@
 				1
 		</trim>
 	</insert>
+	<update id="edit" parameterType="com.znczXcx.entity.ZhiJianJiLu">
+		update `zhi_jian_ji_lu_${qyh}` set
+		<trim suffixOverrides=",">
+			<if test="zjyId!=null">
+				zjyId=#{zjyId},
+			</if>
+			<if test="zjsj!=null">
+				zjsj=#{zjsj},
+			</if>
+			<if test="jg!=null">
+				jg=#{jg},
+			</if>
+			<if test="bz!=null">
+				bz=#{bz},
+			</if>
+			<if test="qytb!=null">
+				qytb=#{qytb},
+			</if>
+		</trim>
+		where qyjlId=#{qyjlId}
+	</update>
 	<select id="getTbZtCount" resultType="java.lang.Integer">
 		select count(*) from zhi_jian_ji_lu_${qyh} where qytb=#{qytb}
 	</select>
@@ -61,10 +82,10 @@
 	<update id="updateTbZtByQytb">
 		update zhi_jian_ji_lu_${qyh} set qytb=#{xtbzt} where qytb=#{qytb}
 	</update>
-	<update id="updateToYtb">
-		update zhi_jian_ji_lu_${qyh} set qytb=${@com.znczXcx.entity.Main@YI_TONG_BU} where qytb=${@com.znczXcx.entity.Main@TONG_BU_ZHONG}
-	</update>
 	<select id="getWtbToYfCount" resultType="java.lang.Integer">
 		select count(*) from `zhi_jian_ji_lu_${qyh}` where qytb=${@com.znczXcx.entity.Main@WEI_TONG_BU}
+	</select>
+	<select id="getCountByQyjlId" resultType="java.lang.Integer">
+		select count(*) from `zhi_jian_ji_lu_${qyh}` where qyjlId=#{qyjlId}
 	</select>
 </mapper>
