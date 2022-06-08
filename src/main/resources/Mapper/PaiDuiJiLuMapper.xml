@@ -28,9 +28,6 @@
 	<update id="updateTbZtByQytb">
 		update pai_dui_ji_lu_${qyh} set qytb=#{xtbzt} where qytb=#{qytb}
 	</update>
-	<update id="updateToYtb">
-		update pai_dui_ji_lu_${qyh} set qytb=${@com.znczXcx.entity.Main@YI_TONG_BU} where qytb=${@com.znczXcx.entity.Main@TONG_BU_ZHONG}
-	</update>
 	<insert id="add" parameterType="com.znczXcx.entity.PaiDuiJiLu">
 		insert into pai_dui_ji_lu_${qyh}
 		<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -69,6 +66,30 @@
 				${@com.znczXcx.entity.Main@WEI_TONG_BU}
 		</trim>
 	</insert>
+	<update id="edit" parameterType="com.znczXcx.entity.PaiDuiJiLu">
+		update `pai_dui_ji_lu_${qyh}` set
+		<trim suffixOverrides=",">
+			<if test="ddId!=null">
+				ddId=#{ddId},
+			</if>
+			<if test="pdsj!=null">
+				pdsj=#{pdsj},
+			</if>
+			<if test="dlh!=null">
+				dlh=#{dlh},
+			</if>
+			<if test="pdh!=null">
+				pdh=#{pdh},
+			</if>
+			<if test="zt!=null">
+				zt=#{zt},
+			</if>
+			<if test="qytb!=null">
+				qytb=#{qytb},
+			</if>
+		</trim>
+		where qyjlId=#{qyjlId}
+	</update>
 	<select id="getCountByDdIdZt" resultType="java.lang.Integer">
 		select count(*) from pai_dui_ji_lu_${qyh} where ddId=#{ddId} and zt=#{zt}
 	</select>
@@ -86,5 +107,8 @@
 	</select>
 	<select id="getQmslByPdh" resultType="java.lang.Integer">
 		select count(*) from pai_dui_ji_lu_${qyh} where date_format(pdsj,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d') and zt=${@com.znczXcx.entity.PaiDuiJiLu@PAI_DUI_ZHONG} and pdh&lt;#{pdh}
+	</select>
+	<select id="getCountByQyjlId" resultType="java.lang.Integer">
+		select count(*) from `pai_dui_ji_lu_${qyh}` where qyjlId=#{qyjlId}
 	</select>
 </mapper>

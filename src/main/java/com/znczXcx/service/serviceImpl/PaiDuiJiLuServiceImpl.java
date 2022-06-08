@@ -36,11 +36,6 @@ public class PaiDuiJiLuServiceImpl implements PaiDuiJiLuService {
 		return paiDuiJiLuDao.updateTbZtByQytb(qyh, qytb, xtbzt);
 	}
 
-	public int updateToYtb(String qyh) {
-		// TODO Auto-generated method stub
-		return paiDuiJiLuDao.updateToYtb(qyh);
-	}
-
 	public int add(PaiDuiJiLu pdjl) {
 		// TODO Auto-generated method stub
 		String qyh = pdjl.getQyh();
@@ -117,5 +112,28 @@ public class PaiDuiJiLuServiceImpl implements PaiDuiJiLuService {
 	public int updateTbZtByQytb(Integer qytb, Integer xtbzt, String qyh) {
 		// TODO Auto-generated method stub
 		return paiDuiJiLuDao.updateTbZtByQytb(qytb, xtbzt, qyh);
+	}
+
+	@Override
+	public int syncToYf(List<PaiDuiJiLu> pdjlList, String qyh) {
+		// TODO Auto-generated method stub
+		int count=0;
+		for (PaiDuiJiLu pdjl : pdjlList) {
+			PaiDuiJiLu paiDuiJiLu=pdjl;
+			paiDuiJiLu.setQyjlId(pdjl.getId());
+			Object yfwDdIdObj = mainDao.getYfwColValByQyColVal("id", pdjl.getQyDdId()+"", "qyjlId", "ding_dan", "yuejiazhuang");
+			if(yfwDdIdObj!=null) {
+				Integer yfwDdId=Integer.valueOf(yfwDdIdObj.toString());
+				paiDuiJiLu.setYfwDdId(yfwDdId);
+			}
+			paiDuiJiLu.setQytb(Main.YI_TONG_BU);
+			paiDuiJiLu.setQyh(qyh);
+			
+		    if(paiDuiJiLuDao.getCountByQyjlId(paiDuiJiLu.getQyjlId(),qyh)==0)
+		    	count+=paiDuiJiLuDao.add(paiDuiJiLu);
+		    else
+		    	count+=paiDuiJiLuDao.edit(paiDuiJiLu);
+		}
+		return count;
 	}
 }

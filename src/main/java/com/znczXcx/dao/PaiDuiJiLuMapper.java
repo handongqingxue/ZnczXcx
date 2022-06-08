@@ -14,11 +14,11 @@ public interface PaiDuiJiLuMapper {
 
 	int updateTbZtByQytb(@Param("qyh") String qyh, @Param("qytb") int qytb, @Param("xtbzt") int xtbzt);
 
-	int updateToYtb(@Param("qyh") String qyh);
-
 	int createTabByQyh(@Param("qyh") String qyh);
 
 	int add(PaiDuiJiLu pdjl);
+
+	int edit(PaiDuiJiLu paiDuiJiLu);
 
 	int getCountByDdIdZt(@Param("ddId") Integer ddId,@Param("zt") Integer zt,@Param("qyh") String qyh);
 
@@ -37,5 +37,7 @@ public interface PaiDuiJiLuMapper {
 	List<PaiDuiJiLu> selectListByQytb(@Param("qytb") Integer qytb, @Param("qyh") String qyh);
 
 	int updateTbZtByQytb(@Param("qytb") Integer qytb, @Param("xtbzt") Integer xtbzt, @Param("qyh") String qyh);
+
+	int getCountByQyjlId(@Param("qyjlId") Integer qyjlId, @Param("qyh") String qyh);
 
 }

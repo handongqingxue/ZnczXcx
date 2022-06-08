@@ -12,8 +12,6 @@ public interface PaiDuiJiLuService {
 
 	int updateTbZtByQytb(String qyh, int qytb, int xtbzt);
 
-	int updateToYtb(String qyh);
-
 	int add(PaiDuiJiLu pdjl);
 
 	boolean checkIfExist(Integer ddId,String qyh);
@@ -27,5 +25,7 @@ public interface PaiDuiJiLuService {
 	List<PaiDuiJiLu> selectListByQytb(Integer qytb, String qyh);
 
 	int updateTbZtByQytb(Integer qytb, Integer xtbzt, String qyh);
+
+	int syncToYf(List<PaiDuiJiLu> pdjlList, String qyh);
 
 }
