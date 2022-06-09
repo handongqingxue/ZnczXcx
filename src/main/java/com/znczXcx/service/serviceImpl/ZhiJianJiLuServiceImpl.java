@@ -26,7 +26,7 @@ public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 		int count=zhiJianJiLuDao.add(zjjl);
 		if(count>0) {
 			DingDan dd=new DingDan();
-			dd.setId(zjjl.getDdId());
+			dd.setId(zjjl.getYfwDdId());
 			int yfwDdztId = 0;
 			if(zjjl.getJg()==ZhiJianJiLu.HE_GE) {
 				yfwDdztId = dingDanZhuangTaiDao.getIdByMc(DingDanZhuangTai.YI_JIAN_PAI_DUI_ZHONG_TEXT, zjjl.getQyh());
@@ -89,6 +89,11 @@ public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 		for (ZhiJianJiLu zjjl : zjjlList) {
 			ZhiJianJiLu zhiJianJiLu=zjjl;
 			zhiJianJiLu.setQyjlId(zjjl.getId());
+			Object yfwDdIdObj = mainDao.getYfwColValByQyColVal("id", zjjl.getQyDdId()+"", "qyjlId", "ding_dan", "yuejiazhuang");
+			if(yfwDdIdObj!=null) {
+				Integer yfwDdId=Integer.valueOf(yfwDdIdObj.toString());
+				zhiJianJiLu.setYfwDdId(yfwDdId);
+			}
 			zhiJianJiLu.setQytb(Main.YI_TONG_BU);
 			zhiJianJiLu.setQyh(qyh);
 			

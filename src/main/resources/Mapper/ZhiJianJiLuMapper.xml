@@ -19,8 +19,14 @@
 	<insert id="add" parameterType="com.znczXcx.entity.ZhiJianJiLu">
 		insert into zhi_jian_ji_lu_${qyh}
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="ddId!=null">
-				ddId,
+			<if test="qyjlId!=null">
+				qyjlId,
+			</if>
+			<if test="yfwDdId!=null">
+				yfwDdId,
+			</if>
+			<if test="qyDdId!=null">
+				qyDdId,
 			</if>
 			<if test="zjyId!=null">
 				zjyId,
@@ -36,8 +42,14 @@
 		</trim>
 		values
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="ddId!=null">
-				#{ddId},
+			<if test="qyjlId!=null">
+				#{qyjlId},
+			</if>
+			<if test="yfwDdId!=null">
+				#{yfwDdId},
+			</if>
+			<if test="qyDdId!=null">
+				#{qyDdId},
 			</if>
 			<if test="zjyId!=null">
 				#{zjyId},
