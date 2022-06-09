@@ -243,7 +243,7 @@ public class MainController {
 
 	@RequestMapping(value="/syncToYf")
 	@ResponseBody
-	public Map<String, Object> syncDDToYf(String tab, String qyh, String entityJAStr) {
+	public Map<String, Object> syncToYf(String tab, String qyh, String entityJAStr) {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		int count=0;
@@ -272,122 +272,74 @@ public class MainController {
 				status="no";
 			}
 		}
+		else if(Main.BANG_DAN_JI_LU.equals(tab)) {
+			List<BangDanJiLu> bdjlList = JSONArray.toList(entityJA, BangDanJiLu.class);
+			System.out.println("size==="+bdjlList.size());
+			count=bangDanJiLuService.syncToYf(bdjlList,qyh);
+			if(count==bdjlList.size()) {
+				status="ok";
+			}
+			else {
+				status="no";
+			}
+		}
+		else if(Main.GUO_BANG_JI_LU.equals(tab)) {
+			List<GuoBangJiLu> gbjlList = JSONArray.toList(entityJA, GuoBangJiLu.class);
+			System.out.println("size==="+gbjlList.size());
+			count=guoBangJiLuService.syncToYf(gbjlList,qyh);
+			if(count==gbjlList.size()) {
+				status="ok";
+			}
+			else {
+				status="no";
+			}
+		}
+		else if(Main.WU_ZI_LEI_XING.equals(tab)) {
+			List<WuZiLeiXing> wzlxList = JSONArray.toList(entityJA, WuZiLeiXing.class);
+			System.out.println("size==="+wzlxList.size());
+			count=wuZiLeiXingService.syncToYf(wzlxList,qyh);
+			if(count==wzlxList.size()) {
+				status="ok";
+			}
+			else {
+				status="no";
+			}
+		}
+		else if(Main.WU_ZI.equals(tab)) {
+			List<WuZi> wzList = JSONArray.toList(entityJA, WuZi.class);
+			System.out.println("size==="+wzList.size());
+			count=wuZiService.syncToYf(wzList,qyh);
+			if(count==wzList.size()) {
+				status="ok";
+			}
+			else {
+				status="no";
+			}
+		}
+		else if(Main.YUN_SHU_SHANG.equals(tab)) {
+			List<YunShuShang> yssList = JSONArray.toList(entityJA, YunShuShang.class);
+			System.out.println("size==="+yssList.size());
+			count=yunShuShangService.syncToYf(yssList,qyh);
+			if(count==yssList.size()) {
+				status="ok";
+			}
+			else {
+				status="no";
+			}
+		}
+		else if(Main.FA_HUO_DAN_WEI.equals(tab)) {
+			List<FaHuoDanWei> fhdwList = JSONArray.toList(entityJA, FaHuoDanWei.class);
+			System.out.println("size==="+fhdwList.size());
+			count=faHuoDanWeiService.syncToYf(fhdwList,qyh);
+			if(count==fhdwList.size()) {
+				status="ok";
+			}
+			else {
+				status="no";
+			}
+		}
 		jsonMap.put("status", status);
 		
-		return jsonMap;
-	}
-
-	@RequestMapping(value="/syncBDJLToYf")
-	@ResponseBody
-	public Map<String, Object> syncBDJLToYf(String qyh, String bdjlJAStr) {
-
-		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		System.out.println("bdjlJAStr==="+bdjlJAStr);
-		JSONArray bdjlJA = JSONArray.fromObject(bdjlJAStr);
-		List<BangDanJiLu> bdjlList = JSONArray.toList(bdjlJA, BangDanJiLu.class);
-		System.out.println("size==="+bdjlList.size());
-		int count=bangDanJiLuService.syncToYf(bdjlList,qyh);
-		if(count==bdjlList.size()) {
-			jsonMap.put("status", "ok");
-		}
-		else {
-			jsonMap.put("status", "no");
-		}
-		return jsonMap;
-	}
-
-	@RequestMapping(value="/syncGBJLToYf")
-	@ResponseBody
-	public Map<String, Object> addGBJLToYf(String qyh, String gbjlJAStr) {
-
-		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		System.out.println("gbjlJAStr==="+gbjlJAStr);
-		JSONArray gbjlJA = JSONArray.fromObject(gbjlJAStr);
-		List<GuoBangJiLu> gbjlList = JSONArray.toList(gbjlJA, GuoBangJiLu.class);
-		System.out.println("size==="+gbjlList.size());
-		int count=guoBangJiLuService.syncToYf(gbjlList,qyh);
-		if(count==gbjlList.size()) {
-			jsonMap.put("status", "ok");
-		}
-		else {
-			jsonMap.put("status", "no");
-		}
-		return jsonMap;
-	}
-
-	@RequestMapping(value="/syncWZLXToYf")
-	@ResponseBody
-	public Map<String, Object> syncWZLXToYf(String qyh, String wzlxJAStr) {
-
-		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		System.out.println("wzlxJAStr==="+wzlxJAStr);
-		JSONArray wzlxJA = JSONArray.fromObject(wzlxJAStr);
-		List<WuZiLeiXing> wzlxList = JSONArray.toList(wzlxJA, WuZiLeiXing.class);
-		System.out.println("size==="+wzlxList.size());
-		int count=wuZiLeiXingService.syncToYf(wzlxList,qyh);
-		if(count==wzlxList.size()) {
-			jsonMap.put("status", "ok");
-		}
-		else {
-			jsonMap.put("status", "no");
-		}
-		return jsonMap;
-	}
-
-	@RequestMapping(value="/syncWZToYf")
-	@ResponseBody
-	public Map<String, Object> syncWZToYf(String qyh, String wzJAStr) {
-
-		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		System.out.println("wzJAStr==="+wzJAStr);
-		JSONArray wzJA = JSONArray.fromObject(wzJAStr);
-		List<WuZi> wzList = JSONArray.toList(wzJA, WuZi.class);
-		System.out.println("size==="+wzList.size());
-		int count=wuZiService.syncToYf(wzList,qyh);
-		if(count==wzList.size()) {
-			jsonMap.put("status", "ok");
-		}
-		else {
-			jsonMap.put("status", "no");
-		}
-		return jsonMap;
-	}
-
-	@RequestMapping(value="/syncYSSToYf")
-	@ResponseBody
-	public Map<String, Object> syncYSSToYf(String qyh, String yssJAStr) {
-
-		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		System.out.println("yssJAStr==="+yssJAStr);
-		JSONArray yssJA = JSONArray.fromObject(yssJAStr);
-		List<YunShuShang> yssList = JSONArray.toList(yssJA, YunShuShang.class);
-		System.out.println("size==="+yssList.size());
-		int count=yunShuShangService.syncToYf(yssList,qyh);
-		if(count==yssList.size()) {
-			jsonMap.put("status", "ok");
-		}
-		else {
-			jsonMap.put("status", "no");
-		}
-		return jsonMap;
-	}
-
-	@RequestMapping(value="/syncFHDWToYf")
-	@ResponseBody
-	public Map<String, Object> syncFHDWToYf(String qyh, String fhdwJAStr) {
-
-		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		System.out.println("fhdwJAStr==="+fhdwJAStr);
-		JSONArray fhdwJA = JSONArray.fromObject(fhdwJAStr);
-		List<FaHuoDanWei> fhdwList = JSONArray.toList(fhdwJA, FaHuoDanWei.class);
-		System.out.println("size==="+fhdwList.size());
-		int count=faHuoDanWeiService.syncToYf(fhdwList,qyh);
-		if(count==fhdwList.size()) {
-			jsonMap.put("status", "ok");
-		}
-		else {
-			jsonMap.put("status", "no");
-		}
 		return jsonMap;
 	}
 
