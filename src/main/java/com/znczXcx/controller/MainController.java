@@ -46,6 +46,8 @@ public class MainController {
 	@Autowired
 	private DingDanService dingDanService;
 	@Autowired
+	private ShenHeJiLuService shenHeJiLuService;
+	@Autowired
 	private DingDanZhuangTaiService dingDanZhuangTaiService;
 	@Autowired
 	private PaiDuiJiLuService paiDuiJiLuService;
@@ -239,22 +241,39 @@ public class MainController {
 		return jsonMap;
 	}
 
-	@RequestMapping(value="/syncDDToYf")
+	@RequestMapping(value="/syncToYf")
 	@ResponseBody
-	public Map<String, Object> syncDDToYf(String qyh, String ddJAStr) {
+	public Map<String, Object> syncDDToYf(String tab, String qyh, String entityJAStr) {
 
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
-		System.out.println("ddJAStr==="+ddJAStr);
-		JSONArray ddJA = JSONArray.fromObject(ddJAStr);
-		List<DingDan> ddList = JSONArray.toList(ddJA, DingDan.class);
-		System.out.println("size==="+ddList.size());
-		int count=dingDanService.syncToYf(ddList,qyh);
-		if(count==ddList.size()) {
-			jsonMap.put("status", "ok");
+		int count=0;
+		String status=null;
+		System.out.println("entityJAStr==="+entityJAStr);
+		JSONArray entityJA = JSONArray.fromObject(entityJAStr);
+		if(Main.DING_DAN.equals(tab)) {
+			List<DingDan> ddList = JSONArray.toList(entityJA, DingDan.class);
+			System.out.println("size==="+ddList.size());
+			count=dingDanService.syncToYf(ddList,qyh);
+			if(count==ddList.size()) {
+				status="ok";
+			}
+			else {
+				status="no";
+			}
 		}
-		else {
-			jsonMap.put("status", "no");
+		else if(Main.SHEN_HE_JI_LU.equals(tab)) {
+			List<ShenHeJiLu> shjlList = JSONArray.toList(entityJA, ShenHeJiLu.class);
+			System.out.println("size==="+shjlList.size());
+			count=shenHeJiLuService.syncToYf(shjlList,qyh);
+			if(count==shjlList.size()) {
+				status="ok";
+			}
+			else {
+				status="no";
+			}
 		}
+		jsonMap.put("status", status);
+		
 		return jsonMap;
 	}
 
