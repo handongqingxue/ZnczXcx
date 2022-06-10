@@ -20,13 +20,13 @@ public interface PaiDuiJiLuMapper {
 
 	int edit(PaiDuiJiLu paiDuiJiLu);
 
-	int getCountByDdIdZt(@Param("ddId") Integer ddId,@Param("zt") Integer zt,@Param("qyh") String qyh);
+	int getCountByDdIdZt(@Param("yfwDdId") Integer yfwDdId,@Param("zt") Integer zt,@Param("qyh") String qyh);
 
 	Integer getTodayLastDlh(@Param("qyh") String qyh);
 
 	Integer getTodayLastPdh(@Param("qyh") String qyh);
 
-	int updatePhdByDdId(@Param("pdh") Integer pdh, @Param("ddId") Integer ddId, @Param("qyh") String qyh);
+	int updatePhdByDdId(@Param("pdh") Integer pdh, @Param("yfwDdId") Integer yfwDdId, @Param("qyh") String qyh);
 
 	PaiDuiJiLu selectByDdId(@Param("ddId") Integer ddId, @Param("qyh") String qyh);
 

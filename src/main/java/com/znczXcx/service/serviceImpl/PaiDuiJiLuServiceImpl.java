@@ -49,30 +49,30 @@ public class PaiDuiJiLuServiceImpl implements PaiDuiJiLuService {
 		pdjl.setPdh(lastPdh);
 		int count=paiDuiJiLuDao.add(pdjl);
 		if(count>0) {
-			updateDDZTById(pdjl.getDdId(),qyh);
+			updateDDZTById(pdjl.getYfwDdId(),qyh);
 		}
 		return count;
 	}
 
-	public boolean checkIfExist(Integer ddId,String qyh) {
+	public boolean checkIfExist(Integer yfwDdId,String qyh) {
 		// TODO Auto-generated method stub
-		return paiDuiJiLuDao.getCountByDdIdZt(ddId,PaiDuiJiLu.PAI_DUI_ZHONG,qyh)==0?false:true;
+		return paiDuiJiLuDao.getCountByDdIdZt(yfwDdId,PaiDuiJiLu.PAI_DUI_ZHONG,qyh)==0?false:true;
 	}
 
-	public int updatePhdByDdId(Integer ddId,String qyh) {
+	public int updatePhdByDdId(Integer yfwDdId,String qyh) {
 		// TODO Auto-generated method stub
 		Integer lastPdh=paiDuiJiLuDao.getTodayLastPdh(qyh);
 		lastPdh=lastPdh==null?0:lastPdh;
-		int count=paiDuiJiLuDao.updatePhdByDdId(++lastPdh,ddId,qyh);
+		int count=paiDuiJiLuDao.updatePhdByDdId(++lastPdh,yfwDdId,qyh);
 		if(count>0) {
-			updateDDZTById(ddId,qyh);
+			updateDDZTById(yfwDdId,qyh);
 		}
 		return count;
 	}
 	
-	public void updateDDZTById(Integer ddId, String qyh) {
+	public void updateDDZTById(Integer yfwDdId, String qyh) {
 		DingDan dd=new DingDan();
-		dd.setId(ddId);
+		dd.setId(yfwDdId);
 		int ddztId=dingDanZhuangTaiDao.getIdByMc(DingDanZhuangTai.ZHI_JIAN_PAI_DUI_ZHONG_TEXT,qyh);
 		dd.setYfwDdztId(ddztId);
 		//获取企业端订单状态id

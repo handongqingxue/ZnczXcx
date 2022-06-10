@@ -91,7 +91,7 @@
 		where qyjlId=#{qyjlId}
 	</update>
 	<select id="getCountByDdIdZt" resultType="java.lang.Integer">
-		select count(*) from pai_dui_ji_lu_${qyh} where ddId=#{ddId} and zt=#{zt}
+		select count(*) from pai_dui_ji_lu_${qyh} where yfwDdId=#{yfwDdId} and zt=#{zt}
 	</select>
 	<select id="getTodayLastDlh" resultType="java.lang.Integer">
 		select max(dlh) from pai_dui_ji_lu_${qyh} where date_format(pdsj,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d')
@@ -100,7 +100,7 @@
 		select max(pdh) from pai_dui_ji_lu_${qyh} where date_format(pdsj,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d')
 	</select>
 	<update id="updatePhdByDdId">
-		update pai_dui_ji_lu_${qyh} set pdh=#{pdh} where zt=${@com.znczXcx.entity.PaiDuiJiLu@PAI_DUI_ZHONG} and ddId=#{ddId}
+		update pai_dui_ji_lu_${qyh} set pdh=#{pdh} where zt=${@com.znczXcx.entity.PaiDuiJiLu@PAI_DUI_ZHONG} and yfwDdId=#{yfwDdId}
 	</update>
 	<select id="selectByDdId" resultType="com.znczXcx.entity.PaiDuiJiLu">
 		select pdjl.*,dd.cph,dd.ewmlj from pai_dui_ji_lu_${qyh} pdjl,ding_dan_${qyh} dd where pdjl.ddId=dd.id and dd.id=#{ddId}

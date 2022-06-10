@@ -14,9 +14,9 @@ public interface PaiDuiJiLuService {
 
 	int add(PaiDuiJiLu pdjl);
 
-	boolean checkIfExist(Integer ddId,String qyh);
+	boolean checkIfExist(Integer yfwDdId,String qyh);
 
-	int updatePhdByDdId(Integer ddId,String qyh);
+	int updatePhdByDdId(Integer yfwDdId,String qyh);
 
 	PaiDuiJiLu selectByDdId(Integer ddId, String qyh);
 

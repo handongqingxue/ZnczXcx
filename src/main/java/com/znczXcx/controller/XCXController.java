@@ -31,12 +31,12 @@ public class XCXController {
 		
 		Map<String, Object> jsonMap = new HashMap<String, Object>();
 		
-		Integer ddId = pdjl.getDdId();
+		Integer yfwDdId = pdjl.getYfwDdId();
 		String qyh = pdjl.getQyh();
-		boolean exist=paiDuiJiLuService.checkIfExist(ddId,qyh);
+		boolean exist=paiDuiJiLuService.checkIfExist(yfwDdId,qyh);
 		int count=0;
 		if(exist)
-			count=paiDuiJiLuService.updatePhdByDdId(ddId,qyh);
+			count=paiDuiJiLuService.updatePhdByDdId(yfwDdId,qyh);
 		else {
 			pdjl.setQyh(qyh);
 			count=paiDuiJiLuService.add(pdjl);
