@@ -40,4 +40,6 @@ public interface PaiDuiJiLuMapper {
 
 	int getCountByQyjlId(@Param("qyjlId") Integer qyjlId, @Param("qyh") String qyh);
 
+	int updateZtByYfwDdId(@Param("zt") Integer zt, @Param("yfwDdId") Integer yfwDdId, @Param("qyh") String qyh);
+
 }

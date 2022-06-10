@@ -34,8 +34,8 @@
 			<if test="qyjlId!=null">
 				qyjlId,
 			</if>
-			<if test="ddId!=null">
-				ddId,
+			<if test="yfwDdId!=null">
+				yfwDdId,
 			</if>
 				pdsj,
 			<if test="dlh!=null">
@@ -52,8 +52,8 @@
 			<if test="qyjlId!=null">
 				#{qyjlId},
 			</if>
-			<if test="ddId!=null">
-				#{ddId},
+			<if test="yfwDdId!=null">
+				#{yfwDdId},
 			</if>
 				now(),
 			<if test="dlh!=null">
@@ -103,7 +103,7 @@
 		update pai_dui_ji_lu_${qyh} set pdh=#{pdh} where zt=${@com.znczXcx.entity.PaiDuiJiLu@PAI_DUI_ZHONG} and yfwDdId=#{yfwDdId}
 	</update>
 	<select id="selectByDdId" resultType="com.znczXcx.entity.PaiDuiJiLu">
-		select pdjl.*,dd.cph,dd.ewmlj from pai_dui_ji_lu_${qyh} pdjl,ding_dan_${qyh} dd where pdjl.ddId=dd.id and dd.id=#{ddId}
+		select pdjl.*,dd.cph,dd.ewmlj from pai_dui_ji_lu_${qyh} pdjl,ding_dan_${qyh} dd where pdjl.yfwDdId=dd.id and dd.id=#{ddId}
 	</select>
 	<select id="getQmslByPdh" resultType="java.lang.Integer">
 		select count(*) from pai_dui_ji_lu_${qyh} where date_format(pdsj,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d') and zt=${@com.znczXcx.entity.PaiDuiJiLu@PAI_DUI_ZHONG} and pdh&lt;#{pdh}
@@ -111,4 +111,7 @@
 	<select id="getCountByQyjlId" resultType="java.lang.Integer">
 		select count(*) from `pai_dui_ji_lu_${qyh}` where qyjlId=#{qyjlId}
 	</select>
+	<update id="updateZtByYfwDdId">
+		update `pai_dui_ji_lu_${qyh}` set zt=#{zt} where yfwDdId=#{yfwDdId}
+	</update>
 </mapper>

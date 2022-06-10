@@ -13,6 +13,8 @@ import com.znczXcx.service.*;
 public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 
 	@Autowired
+	private PaiDuiJiLuMapper paiDuiJiLuDao;
+	@Autowired
 	private ZhiJianJiLuMapper zhiJianJiLuDao;
 	@Autowired
 	private DingDanZhuangTaiMapper dingDanZhuangTaiDao;
@@ -37,13 +39,15 @@ public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 			dd.setYfwDdztId(yfwDdztId);
 			
 			//获取企业订单状态id
-			Object qyDdztIdObj = mainDao.getYfwColValByQyColVal("qyjlId", dd.getYfwDdztId()+"", "id", "ding_dan_zhuang_tai", "yuejiazhuang");
+			Object qyDdztIdObj = mainDao.getYfwColValByQyColVal("qyjlId", dd.getYfwDdztId()+"", "id", "ding_dan_zhuang_tai", zjjl.getQyh());
 			if(qyDdztIdObj!=null) {
 				Integer qyDdztId=Integer.valueOf(qyDdztIdObj.toString());
 				dd.setQyDdztId(qyDdztId);
 			}
 			dd.setQyh(zjjl.getQyh());
 			dingDanDao.editById(dd);
+			
+			paiDuiJiLuDao.updateZtByYfwDdId(PaiDuiJiLu.YI_WAN_CHENG,zjjl.getYfwDdId(),zjjl.getQyh());
 		}
 		return count;
 	}
