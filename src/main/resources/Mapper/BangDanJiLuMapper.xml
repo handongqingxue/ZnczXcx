@@ -38,6 +38,9 @@
 			<if test="yfwDdId!=null">
 				yfwDdId,
 			</if>
+			<if test="qyDdId!=null">
+				qyDdId,
+			</if>
 			<if test="qytb!=null">
 				qytb,
 			</if>
@@ -62,6 +65,9 @@
 			<if test="yfwDdId!=null">
 				#{yfwDdId},
 			</if>
+			<if test="qyDdId!=null">
+				#{qyDdId},
+			</if>
 			<if test="qytb!=null">
 				#{qytb},
 			</if>
@@ -78,6 +84,12 @@
 			</if>
 			<if test="jz!=null">
 				jz=#{jz},
+			</if>
+			<if test="yfwDdId!=null">
+				yfwDdId=#{yfwDdId},
+			</if>
+			<if test="qyDdId!=null">
+				qyDdId=#{qyDdId},
 			</if>
 			<if test="bz!=null">
 				bz=#{bz},
