@@ -58,4 +58,11 @@ public class YongHuServiceImpl implements YongHuService {
 		// TODO Auto-generated method stub
 		return yongHuDao.updateTbZtByQytb(qytb, xtbzt, qyh);
 	}
+
+	@Override
+	public YongHu login(String yhm, String mm, String qyh) {
+		// TODO Auto-generated method stub
+		YongHu yh=yongHuDao.get(yhm,mm,qyh);
+		return yh;
+	}
 }

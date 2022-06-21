@@ -4,19 +4,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.znczXcx.entity.*;
 import com.znczXcx.service.*;
+import com.znczXcx.util.*;
 
 @Controller
 @RequestMapping("/"+XCXController.MODULE_NAME)
 public class XCXController {
 
+	@Autowired
+	private YongHuService yongHuService;
 	@Autowired
 	private DingDanService dingDanService;
 	@Autowired
@@ -24,6 +32,27 @@ public class XCXController {
 	@Autowired
 	private ZhiJianJiLuService zhiJianJiLuService;
 	public static final String MODULE_NAME="xcx";
+	
+	@RequestMapping(value="/login",method=RequestMethod.POST,produces="plain/text; charset=UTF-8")
+	@ResponseBody
+	public String login(String yhm,String mm,String qyh,HttpServletRequest request) {
+		
+		System.out.println("===登录接口===");
+		
+		PlanResult plan=new PlanResult();
+		YongHu yongHu = yongHuService.login(yhm, mm,qyh);
+		if(yongHu==null) {
+			plan.setStatus(0);
+			plan.setMsg("用户名或密码有误");
+		}
+		else {
+			plan.setStatus(1);
+			plan.setData(yongHu);
+			plan.setMsg("登录成功");
+		}
+		
+		return JsonUtil.getJsonFromObject(plan);
+	}
 
 	@RequestMapping(value="/newPaiDuiJiLu")
 	@ResponseBody

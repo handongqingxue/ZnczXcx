@@ -13,4 +13,6 @@ public interface YongHuService {
 	List<YongHu> selectListByQytb(Integer qytb, String qyh);
 
 	int updateTbZtByQytb(int qytb, int xtbzt, String qyh);
+
+	YongHu login(String yhm, String mm, String qyh);
 }

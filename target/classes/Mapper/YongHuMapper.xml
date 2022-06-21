@@ -122,4 +122,7 @@
 	<update id="updateTbZtByQytb">
 		update `yong_hu_${qyh}` set qytb=#{xtbzt} where qytb=#{qytb}
 	</update>
+	<select id="get" resultType="com.znczXcx.entity.YongHu">
+		select * from `yong_hu_${qyh}` where yhm=#{yhm} and mm=#{mm}
+	</select>
 </mapper>
