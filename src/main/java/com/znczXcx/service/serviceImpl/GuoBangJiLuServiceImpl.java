@@ -22,7 +22,7 @@ public class GuoBangJiLuServiceImpl implements GuoBangJiLuService {
 		for (GuoBangJiLu gbjl : gbjlList) {
 			GuoBangJiLu guoBangJiLu=gbjl;
 			guoBangJiLu.setQyjlId(gbjl.getId());
-			Object yfwDdIdObj = mainDao.getYfwColValByQyColVal("id", gbjl.getQyDdId()+"", "qyjlId", "ding_dan", "yuejiazhuang");
+			Object yfwDdIdObj = mainDao.getYfwColValByQyColVal("id", gbjl.getQyDdId()+"", "qyjlId", "ding_dan", qyh);
 			if(yfwDdIdObj!=null) {
 				Integer yfwDdId=Integer.valueOf(yfwDdIdObj.toString());
 				guoBangJiLu.setYfwDdId(yfwDdId);

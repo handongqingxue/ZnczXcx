@@ -64,7 +64,7 @@ public class MainController {
 	 */
 	@RequestMapping(value="/goLogin")
 	public String goLogin() {
-		boolean bool=mainService.createTabByQyh("yuejiazhuang");
+		//boolean bool=mainService.createTabByQyh("yuejiazhuang");
 		
 		return "login";
 	}

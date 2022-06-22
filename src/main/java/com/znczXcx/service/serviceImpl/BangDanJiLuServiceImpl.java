@@ -22,7 +22,7 @@ public class BangDanJiLuServiceImpl implements BangDanJiLuService {
 		for (BangDanJiLu bdjl : bdjlList) {
 			BangDanJiLu bangDanJiLu=bdjl;
 			bangDanJiLu.setQyjlId(bdjl.getId());
-			Object yfwDdIdObj = mainDao.getYfwColValByQyColVal("id", bdjl.getQyDdId()+"", "qyjlId", "ding_dan", "yuejiazhuang");
+			Object yfwDdIdObj = mainDao.getYfwColValByQyColVal("id", bdjl.getQyDdId()+"", "qyjlId", "ding_dan", qyh);
 			if(yfwDdIdObj!=null) {
 				Integer yfwDdId=Integer.valueOf(yfwDdIdObj.toString());
 				bangDanJiLu.setYfwDdId(yfwDdId);

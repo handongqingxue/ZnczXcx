@@ -93,12 +93,12 @@ public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 		for (ZhiJianJiLu zjjl : zjjlList) {
 			ZhiJianJiLu zhiJianJiLu=zjjl;
 			zhiJianJiLu.setQyjlId(zjjl.getId());
-			Object yfwDdIdObj = mainDao.getYfwColValByQyColVal("id", zjjl.getQyDdId()+"", "qyjlId", "ding_dan", "yuejiazhuang");
+			Object yfwDdIdObj = mainDao.getYfwColValByQyColVal("id", zjjl.getQyDdId()+"", "qyjlId", "ding_dan", qyh);
 			if(yfwDdIdObj!=null) {
 				Integer yfwDdId=Integer.valueOf(yfwDdIdObj.toString());
 				zhiJianJiLu.setYfwDdId(yfwDdId);
 			}
-			Object yfwZjyIdObj = mainDao.getYfwColValByQyColVal("id", zjjl.getQyZjyId()+"", "qyjlId", "yong_hu", "yuejiazhuang");
+			Object yfwZjyIdObj = mainDao.getYfwColValByQyColVal("id", zjjl.getQyZjyId()+"", "qyjlId", "yong_hu", qyh);
 			if(yfwZjyIdObj!=null) {
 				Integer yfwZjyId=Integer.valueOf(yfwZjyIdObj.toString());
 				zhiJianJiLu.setYfwZjyId(yfwZjyId);

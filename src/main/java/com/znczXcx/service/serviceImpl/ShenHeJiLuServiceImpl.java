@@ -23,7 +23,7 @@ public class ShenHeJiLuServiceImpl implements ShenHeJiLuService {
 		for (ShenHeJiLu shjl : shjlList) {
 			ShenHeJiLu shenHeJiLu=shjl;
 			shenHeJiLu.setQyjlId(shjl.getId());
-			Object yfwDdIdObj = mainDao.getYfwColValByQyColVal("id", shjl.getQyDdId()+"", "qyjlId", "ding_dan", "yuejiazhuang");
+			Object yfwDdIdObj = mainDao.getYfwColValByQyColVal("id", shjl.getQyDdId()+"", "qyjlId", "ding_dan", qyh);
 			if(yfwDdIdObj!=null) {
 				Integer yfwDdId=Integer.valueOf(yfwDdIdObj.toString());
 				shenHeJiLu.setYfwDdId(yfwDdId);

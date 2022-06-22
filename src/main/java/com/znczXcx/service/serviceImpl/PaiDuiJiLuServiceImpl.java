@@ -76,7 +76,7 @@ public class PaiDuiJiLuServiceImpl implements PaiDuiJiLuService {
 		int ddztId=dingDanZhuangTaiDao.getIdByMc(DingDanZhuangTai.ZHI_JIAN_PAI_DUI_ZHONG_TEXT,qyh);
 		dd.setYfwDdztId(ddztId);
 		//获取企业端订单状态id
-		Object qyDdztIdObj = mainDao.getYfwColValByQyColVal("qyjlId", dd.getYfwDdztId()+"", "id", "ding_dan_zhuang_tai", "yuejiazhuang");
+		Object qyDdztIdObj = mainDao.getYfwColValByQyColVal("qyjlId", dd.getYfwDdztId()+"", "id", "ding_dan_zhuang_tai", qyh);
 		if(qyDdztIdObj!=null) {
 			Integer qyDdztId=Integer.valueOf(qyDdztIdObj.toString());
 			dd.setQyDdztId(qyDdztId);
@@ -121,7 +121,7 @@ public class PaiDuiJiLuServiceImpl implements PaiDuiJiLuService {
 		for (PaiDuiJiLu pdjl : pdjlList) {
 			PaiDuiJiLu paiDuiJiLu=pdjl;
 			paiDuiJiLu.setQyjlId(pdjl.getId());
-			Object yfwDdIdObj = mainDao.getYfwColValByQyColVal("id", pdjl.getQyDdId()+"", "qyjlId", "ding_dan", "yuejiazhuang");
+			Object yfwDdIdObj = mainDao.getYfwColValByQyColVal("id", pdjl.getQyDdId()+"", "qyjlId", "ding_dan", qyh);
 			if(yfwDdIdObj!=null) {
 				Integer yfwDdId=Integer.valueOf(yfwDdIdObj.toString());
 				paiDuiJiLu.setYfwDdId(yfwDdId);

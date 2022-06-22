@@ -28,42 +28,42 @@ public class DingDanServiceImpl implements DingDanService {
 			dingDan.setQyjlId(dd.getId());
 
 			//获取云服务端订单状态id
-			Object yfwDdztIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyDdztId()+"", "qyjlId", "ding_dan_zhuang_tai", "yuejiazhuang");
+			Object yfwDdztIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyDdztId()+"", "qyjlId", "ding_dan_zhuang_tai", qyh);
 			if(yfwDdztIdObj!=null) {
 				Integer yfwDdztId=Integer.valueOf(yfwDdztIdObj.toString());
 				dingDan.setYfwDdztId(yfwDdztId);
 			}
 
 			//获取云服务端物资类型id
-			Object yfwWzlxIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyWzlxId()+"", "qyjlId", "wu_zi_lei_xing", "yuejiazhuang");
+			Object yfwWzlxIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyWzlxId()+"", "qyjlId", "wu_zi_lei_xing", qyh);
 			if(yfwWzlxIdObj!=null) {
 				Integer yfwWzlxId=Integer.valueOf(yfwWzlxIdObj.toString());
 				dingDan.setYfwWzlxId(yfwWzlxId);
 			}
 
 			//获取云服务端物资id
-			Object yfwWzIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyWzId()+"", "qyjlId", "wu_zi", "yuejiazhuang");
+			Object yfwWzIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyWzId()+"", "qyjlId", "wu_zi", qyh);
 			if(yfwWzIdObj!=null) {
 				Integer yfwWzId=Integer.valueOf(yfwWzIdObj.toString());
 				dingDan.setYfwWzId(yfwWzId);
 			}
 			
 			//获取云服务端运输商id
-			Object yfwYssIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyYssId()+"", "qyjlId", "yun_shu_shang", "yuejiazhuang");
+			Object yfwYssIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyYssId()+"", "qyjlId", "yun_shu_shang", qyh);
 			if(yfwYssIdObj!=null) {
 				Integer yfwYssId=Integer.valueOf(yfwYssIdObj.toString());
 				dingDan.setYfwYssId(yfwYssId);
 			}
 			
 			//获取云服务端发货单位id
-			Object yfwFhdwIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyFhdwId()+"", "qyjlId", "fa_huo_dan_wei", "yuejiazhuang");
+			Object yfwFhdwIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyFhdwId()+"", "qyjlId", "fa_huo_dan_wei", qyh);
 			if(yfwFhdwIdObj!=null) {
 				Integer yfwFhdwId=Integer.valueOf(yfwFhdwIdObj.toString());
 				dingDan.setYfwFhdwId(yfwFhdwId);
 			}
 			
 			//获取云服务端收货部门id
-			Object yfwShbmIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyShbmId()+"", "qyjlId", "shou_huo_bu_men", "yuejiazhuang");
+			Object yfwShbmIdObj = mainDao.getYfwColValByQyColVal("id", dd.getQyShbmId()+"", "qyjlId", "shou_huo_bu_men", qyh);
 			if(yfwShbmIdObj!=null) {
 				Integer yfwShbmId=Integer.valueOf(yfwShbmIdObj.toString());
 				dingDan.setYfwShbmId(yfwShbmId);
