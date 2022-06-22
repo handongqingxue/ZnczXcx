@@ -22,4 +22,6 @@ public interface ZhiJianJiLuService {
 
 	int syncToYf(List<ZhiJianJiLu> zjjlList, String qyh);
 
+	List<ZhiJianJiLu> queryList(Integer jg, String ddh, Integer ddztId, String zjyZsxm, String qyh);
+
 }

@@ -30,11 +30,29 @@ public class ZhiJianJiLu {
 	public void setQyDdId(Integer qyDdId) {
 		this.qyDdId = qyDdId;
 	}
-	public Integer getZjyId() {
-		return zjyId;
+	public String getDdh() {
+		return ddh;
 	}
-	public void setZjyId(Integer zjyId) {
-		this.zjyId = zjyId;
+	public void setDdh(String ddh) {
+		this.ddh = ddh;
+	}
+	public String getDdztMc() {
+		return ddztMc;
+	}
+	public void setDdztMc(String ddztMc) {
+		this.ddztMc = ddztMc;
+	}
+	public Integer getYfwZjyId() {
+		return yfwZjyId;
+	}
+	public void setYfwZjyId(Integer yfwZjyId) {
+		this.yfwZjyId = yfwZjyId;
+	}
+	public Integer getQyZjyId() {
+		return qyZjyId;
+	}
+	public void setQyZjyId(Integer qyZjyId) {
+		this.qyZjyId = qyZjyId;
 	}
 	public String getZjyZsxm() {
 		return zjyZsxm;
@@ -75,7 +93,10 @@ public class ZhiJianJiLu {
 	private Integer qyjlId;
 	private Integer yfwDdId;
 	private Integer qyDdId;
-	private Integer zjyId;
+	private String ddh;//订单号
+	private String ddztMc;
+	private Integer yfwZjyId;
+	private Integer qyZjyId;
 	private String zjyZsxm;
 	private String zjsj;
 	private Integer jg;//结果 1.合格 2.不合格

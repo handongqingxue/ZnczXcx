@@ -98,6 +98,11 @@ public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 				Integer yfwDdId=Integer.valueOf(yfwDdIdObj.toString());
 				zhiJianJiLu.setYfwDdId(yfwDdId);
 			}
+			Object yfwZjyIdObj = mainDao.getYfwColValByQyColVal("id", zjjl.getQyZjyId()+"", "qyjlId", "yong_hu", "yuejiazhuang");
+			if(yfwZjyIdObj!=null) {
+				Integer yfwZjyId=Integer.valueOf(yfwZjyIdObj.toString());
+				zhiJianJiLu.setYfwZjyId(yfwZjyId);
+			}
 			zhiJianJiLu.setQytb(Main.YI_TONG_BU);
 			zhiJianJiLu.setQyh(qyh);
 			
@@ -107,5 +112,11 @@ public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 		    	count+=zhiJianJiLuDao.edit(zhiJianJiLu);
 		}
 		return count;
+	}
+
+	@Override
+	public List<ZhiJianJiLu> queryList(Integer jg, String ddh, Integer ddztId, String zjyZsxm, String qyh) {
+		// TODO Auto-generated method stub
+		return zhiJianJiLuDao.queryList(jg, ddh, ddztId, zjyZsxm, qyh);
 	}
 }

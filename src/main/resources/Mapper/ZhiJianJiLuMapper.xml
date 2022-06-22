@@ -28,8 +28,11 @@
 			<if test="qyDdId!=null">
 				qyDdId,
 			</if>
-			<if test="zjyId!=null">
-				zjyId,
+			<if test="yfwZjyId!=null">
+				yfwZjyId,
+			</if>
+			<if test="qyZjyId!=null">
+				qyZjyId,
 			</if>
 				zjsj,
 			<if test="jg!=null">
@@ -51,8 +54,11 @@
 			<if test="qyDdId!=null">
 				#{qyDdId},
 			</if>
-			<if test="zjyId!=null">
-				#{zjyId},
+			<if test="yfwZjyId!=null">
+				#{yfwZjyId},
+			</if>
+			<if test="qyZjyId!=null">
+				#{qyZjyId},
 			</if>
 				now(),
 			<if test="jg!=null">
@@ -67,8 +73,11 @@
 	<update id="edit" parameterType="com.znczXcx.entity.ZhiJianJiLu">
 		update `zhi_jian_ji_lu_${qyh}` set
 		<trim suffixOverrides=",">
-			<if test="zjyId!=null">
-				zjyId=#{zjyId},
+			<if test="yfwZjyId!=null">
+				yfwZjyId=#{yfwZjyId},
+			</if>
+			<if test="qyZjyId!=null">
+				qyZjyId=#{qyZjyId},
 			</if>
 			<if test="zjsj!=null">
 				zjsj=#{zjsj},
@@ -99,5 +108,20 @@
 	</select>
 	<select id="getCountByQyjlId" resultType="java.lang.Integer">
 		select count(*) from `zhi_jian_ji_lu_${qyh}` where qyjlId=#{qyjlId}
+	</select>
+	<select id="queryList" resultType="com.znczXcx.entity.ZhiJianJiLu">
+		select zjjl.id,zjjl.jg,zjjl.zjsj,dd.ddh,zjy.zsxm zjyZsxm,ddzt.mc ddztMc from `zhi_jian_ji_lu_${qyh}` zjjl,`yong_hu_${qyh}` zjy,`ding_dan_${qyh}` dd,`ding_dan_zhuang_tai_${qyh}` ddzt where zjjl.yfwZjyId=zjy.id and zjjl.yfwDdId=dd.id and dd.yfwDdztId=ddzt.id
+		<if test="jg!=''&amp;jg!=null">
+			and zjjl.jg=#{jg}
+		</if> 
+		<if test="ddh!=''&amp;ddh!=null">
+			and dd.ddh like CONCAT('%',#{ddh},'%')
+		</if> 
+		<if test="ddztId!=''&amp;ddztId!=null">
+			and dd.yfwDdztId=#{ddztId}
+		</if> 
+		<if test="zjyZsxm!=''&amp;zjyZsxm!=null">
+			and zjy.zsxm like CONCAT('%',#{zjyZsxm},'%')
+		</if> 
 	</select>
 </mapper>

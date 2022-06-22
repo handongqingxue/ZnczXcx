@@ -1,6 +1,7 @@
 package com.znczXcx.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -152,6 +153,26 @@ public class XCXController {
 			jsonMap.put("message", "no");
 			jsonMap.put("info", "没有找到相关订单信息！");
 		}
+		return jsonMap;
+	}
+
+	@RequestMapping(value="/getZhiJianJiLuList")
+	@ResponseBody
+	public Map<String, Object> getZhiJianJiLuList(Integer jg,String ddh,Integer ddztId,String zjyZsxm,String qyh) {
+
+		Map<String, Object> jsonMap = new HashMap<String, Object>();
+		
+		List<ZhiJianJiLu> zjjlList=zhiJianJiLuService.queryList(jg, ddh, ddztId, zjyZsxm, qyh);
+		
+		if(zjjlList.size()==0) {
+			jsonMap.put("message", "no");
+			jsonMap.put("info", "暂无质检记录！");
+		}
+		else {
+			jsonMap.put("message", "ok");
+			jsonMap.put("zjjlList", zjjlList);
+		}
+
 		return jsonMap;
 	}
 }

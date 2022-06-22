@@ -26,4 +26,6 @@ public interface ZhiJianJiLuMapper {
 
 	int getCountByQyjlId(@Param("qyjlId") Integer qyjlId, @Param("qyh") String qyh);
 
+	List<ZhiJianJiLu> queryList(@Param("jg") Integer jg, @Param("ddh") String ddh, @Param("ddztId") Integer ddztId, @Param("zjyZsxm") String zjyZsxm, @Param("qyh") String qyh);
+
 }
