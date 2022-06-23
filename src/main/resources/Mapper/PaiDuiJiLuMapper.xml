@@ -102,8 +102,8 @@
 	<update id="updatePhdByDdId">
 		update pai_dui_ji_lu_${qyh} set pdh=#{pdh} where zt=${@com.znczXcx.entity.PaiDuiJiLu@PAI_DUI_ZHONG} and yfwDdId=#{yfwDdId}
 	</update>
-	<select id="selectByDdId" resultType="com.znczXcx.entity.PaiDuiJiLu">
-		select pdjl.*,dd.cph,dd.ewmlj from pai_dui_ji_lu_${qyh} pdjl,ding_dan_${qyh} dd where pdjl.yfwDdId=dd.id and dd.id=#{ddId}
+	<select id="selectByDdIdZt" resultType="com.znczXcx.entity.PaiDuiJiLu">
+		select pdjl.*,dd.cph,dd.ewmlj from pai_dui_ji_lu_${qyh} pdjl,ding_dan_${qyh} dd where pdjl.yfwDdId=dd.id and dd.id=#{ddId} and pdjl.zt=#{zt}
 	</select>
 	<select id="getQmslByPdh" resultType="java.lang.Integer">
 		select count(*) from pai_dui_ji_lu_${qyh} where date_format(pdsj,'%Y-%m-%d')=date_format(now(),'%Y-%m-%d') and zt=${@com.znczXcx.entity.PaiDuiJiLu@PAI_DUI_ZHONG} and pdh&lt;#{pdh}

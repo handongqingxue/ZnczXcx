@@ -28,7 +28,7 @@ public interface PaiDuiJiLuMapper {
 
 	int updatePhdByDdId(@Param("pdh") Integer pdh, @Param("yfwDdId") Integer yfwDdId, @Param("qyh") String qyh);
 
-	PaiDuiJiLu selectByDdId(@Param("ddId") Integer ddId, @Param("qyh") String qyh);
+	PaiDuiJiLu selectByDdIdZt(@Param("ddId") Integer ddId, @Param("zt") Integer zt, @Param("qyh") String qyh);
 
 	int getQmslByPdh(@Param("pdh") Integer pdh, @Param("qyh") String qyh);
 

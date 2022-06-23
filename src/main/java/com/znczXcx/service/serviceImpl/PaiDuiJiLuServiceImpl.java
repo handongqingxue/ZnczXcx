@@ -89,7 +89,7 @@ public class PaiDuiJiLuServiceImpl implements PaiDuiJiLuService {
 	@Override
 	public PaiDuiJiLu selectByDdId(Integer ddId, String qyh) {
 		// TODO Auto-generated method stub
-		PaiDuiJiLu pdjl=paiDuiJiLuDao.selectByDdId(ddId, qyh);
+		PaiDuiJiLu pdjl=paiDuiJiLuDao.selectByDdIdZt(ddId, PaiDuiJiLu.PAI_DUI_ZHONG, qyh);
 		int qmsl=paiDuiJiLuDao.getQmslByPdh(pdjl.getPdh(),qyh);
 		pdjl.setQmsl(qmsl);
 		return pdjl;

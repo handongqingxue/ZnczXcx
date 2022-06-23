@@ -44,6 +44,7 @@ public class ZhiJianJiLuServiceImpl implements ZhiJianJiLuService {
 				Integer qyDdztId=Integer.valueOf(qyDdztIdObj.toString());
 				dd.setQyDdztId(qyDdztId);
 			}
+			dd.setQytb(Main.WEI_TONG_BU);
 			dd.setQyh(zjjl.getQyh());
 			dingDanDao.editById(dd);
 			
